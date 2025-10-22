@@ -65,7 +65,7 @@ export function Landing({mode}) {
           </section>
         <footer class="w-full xl:w-[80%] h-max flex flex-col items-center gap-8 py-25 mt-40 border-t ${mode?'border-neutral-600/20':'border-white/20'}">
             <ul class="flex flex-row gap-4">    
-                <li class="opacity-40"><a href="" class="cursor-pointer hover:text-[#607AFB] transition-colors duration-300">Contact </a></li>
+                <li class="opacity-40"><a href="" class="cursor-pointer hover:text-[#607AFB] transition-colors duration-300 text-amber-300">Contact </a></li>
                 <li class="opacity-40"><a href="" class="cursor-pointer hover:text-[#607AFB] transition-colors duration-300">Politique de confidentialité </a></li>
                 <li class="opacity-40"><a href="" class="cursor-pointer hover:text-[#607AFB] transition-colors duration-300">Conditions d'utilisation </a></li>
             </ul>

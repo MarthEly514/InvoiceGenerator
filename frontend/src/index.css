@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+.inter {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.filled-icon {
+  fill: currentColor;
+  /* Or a specific color like 'yellow' */
+  stroke-width: 0;
+  /* Remove the stroke */
+}
+
+body {
+  font-family: Inter;
+}
