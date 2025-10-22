@@ -1,0 +1,85 @@
+import { useNavigate } from "react-router-dom";
+import Card from "../src/components/Card";
+import Button from "../src/components/Buttton";
+
+
+export default function Landing({ mode }) {
+    const navigate = useNavigate()
+    const handleNavigate = (link) => {
+        navigate(link)
+    }
+    return (
+        <div className={`w-full min-h-screen h-full flex flex-col items-center ${mode ? 'bg-neutral-100 text-neutral-800' : 'bg-gray-900 text-white'}`}>
+
+            <header className={`w-full xl:w-[80%] p-4 px-8 flex flex-row items-center justify-between border-b ${mode ? 'border-neutral-600/20' : 'border-white/20'} z-10 fixed top-0 backdrop-blur-xl`}>
+                <div className="flex flex-row items-center gap-4">
+                    <i data-lucide="arrow-down-right" className="text-[#607AFB]"></i>
+                    <h1 className="text-xl font-semibold">Invoice Gen</h1>
+                </div>
+                <ul className="flex flex-row items-center gap-4">
+                    <li><a className="hover:text-[#607AFB] opacity-40 transition-colors duration-250" href="#/">Home</a></li>
+                    <li><a className="hover:text-[#607AFB] opacity-40 transition-colors duration-250" href="#/about">A propos</a></li>
+                    <li><a className="hover:text-[#607AFB] opacity-40 transition-colors duration-250" href="#/help">Aide</a></li>
+                </ul>
+            </header>
+
+            {/* <!-- hero section --> */}
+            <section className="mt-10 w-full xl:w-[80%] h-screen lg:h-[90vh] flex flex-col items-center justify-center gap-8 animate-fade-up duration-600">
+                <h1 className="w-full md:w-[80%] xl:w-[70%] text-5xl xl:text-6xl font-semibold text-center px-3">
+                    Générez des factures professionnelles en quelques secondes
+                </h1>
+                <p className="text-lg opacity-40 w-full text-center font-light px-4 xl:text-xl">
+                    Notre outil intuitif vous aide à créer, envoyer et suivre vos factures sans effort.
+                </p>
+                <Button
+                    content={'Générer une facture maintenant'}
+                    onClick={()=>handleNavigate('/edition')}
+                />
+
+            </section>
+
+            {/* <!-- functionnalities section --> */}
+            <section className="w-full xl:w-[80%] h-max flex flex-col items-center gap-8 animate-fade-up duration-500">
+                <h1 className="w-full text-4xl font-semibold text-center px-3">
+                    Fonctionnalités clés
+                </h1>
+                <p className="opacity-40 w-full text-center text-lg font-light px-4">
+                    Découvrez les avantages d'utiliser notre générateur de factures.
+                </p>
+                <div className="w-full 2xl:w-[90%] grid grid-cols-1 lg:grid-cols-3 gap-4 place-items-center p-4">
+                    <Card
+                        mode={mode}
+                        icon="zap"
+                        title="Simplicité"
+                        content={"Créez des factures avec une facilité déconcertante."}
+                    />
+                    <Card
+                        mode={mode}
+                        icon="palette"
+                        title="Personnalisation"
+                        content={"Adaptez vos factures à l'image de votre marque."}
+                    />
+                    <Card
+                        mode={mode}
+                        icon="banknote"
+                        title="Suivi des paiements"
+                        content={"Gardez un oeil sur vos paiements en temps réel."}
+                    />
+                </div>
+            </section>
+            <footer className={`w-full xl:w-[80%] h-max flex flex-col items-center gap-8 py-25 mt-40 border-t ${mode ? 'border-neutral-600/20' : 'border-white/20'}`}>
+                <ul className="flex flex-row gap-4">
+                    <li className="opacity-40"><a href="" className="cursor-pointer hover:text-[#607AFB] transition-colors duration-300">Contact </a></li>
+                    <li className="opacity-40"><a href="" className="cursor-pointer hover:text-[#607AFB] transition-colors duration-300">Politique de confidentialité </a></li>
+                    <li className="opacity-40"><a href="" className="cursor-pointer hover:text-[#607AFB] transition-colors duration-300">Conditions d'utilisation </a></li>
+                </ul>
+                <ul className="flex flex-row gap-4">
+                    <li><i data-lucide="twitter" className="cursor-pointer opacity-40 hover:text-[#607AFB] transition-colors duration-300 filled-icon"></i></li>
+                    <li><i data-lucide="linkedin" className="cursor-pointer opacity-40 hover:text-[#607AFB] transition-colors duration-300 filled-icon"></i></li>
+                    <li><i data-lucide="facebook" className="cursor-pointer opacity-40 hover:text-[#607AFB] transition-colors duration-300 filled-icon"></i></li>
+                </ul>
+                <small className="opacity-30">Copyright &copy; Invoice Gen 2025</small>
+            </footer>
+        </div>
+    )
+}

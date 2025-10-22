@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "tailwindcss-animated";
+
 
 .inter {
   font-family: "Inter", sans-serif;
