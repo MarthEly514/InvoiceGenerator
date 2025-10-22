@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Card from "../src/components/Card";
 import Button from "../src/components/Buttton";
-
+import { ArrowDownRight, Banknote, Facebook, Linkedin, Palette, Twitter, Zap } from "lucide-react";
 
 export default function Landing({ mode }) {
     const navigate = useNavigate()
@@ -13,7 +13,7 @@ export default function Landing({ mode }) {
 
             <header className={`w-full xl:w-[80%] p-4 px-8 flex flex-row items-center justify-between border-b ${mode ? 'border-neutral-600/20' : 'border-white/20'} z-10 fixed top-0 backdrop-blur-xl`}>
                 <div className="flex flex-row items-center gap-4">
-                    <i data-lucide="arrow-down-right" className="text-[#607AFB]"></i>
+                    <ArrowDownRight className="text-[#607AFB]" />
                     <h1 className="text-xl font-semibold">Invoice Gen</h1>
                 </div>
                 <ul className="flex flex-row items-center gap-4">
@@ -33,7 +33,7 @@ export default function Landing({ mode }) {
                 </p>
                 <Button
                     content={'Générer une facture maintenant'}
-                    onClick={()=>handleNavigate('/edition')}
+                    onClick={() => handleNavigate('/edition')}
                 />
 
             </section>
@@ -49,19 +49,19 @@ export default function Landing({ mode }) {
                 <div className="w-full 2xl:w-[90%] grid grid-cols-1 lg:grid-cols-3 gap-4 place-items-center p-4">
                     <Card
                         mode={mode}
-                        icon="zap"
+                        icon={<Zap className="text-[#607AFB] w-13 h-13" />}
                         title="Simplicité"
                         content={"Créez des factures avec une facilité déconcertante."}
                     />
                     <Card
                         mode={mode}
-                        icon="palette"
+                        icon={<Palette className="text-[#607AFB] w-13 h-13" />}
                         title="Personnalisation"
                         content={"Adaptez vos factures à l'image de votre marque."}
                     />
                     <Card
                         mode={mode}
-                        icon="banknote"
+                        icon={<Banknote className="text-[#607AFB] w-13 h-13" />}
                         title="Suivi des paiements"
                         content={"Gardez un oeil sur vos paiements en temps réel."}
                     />
@@ -74,9 +74,9 @@ export default function Landing({ mode }) {
                     <li className="opacity-40"><a href="" className="cursor-pointer hover:text-[#607AFB] transition-colors duration-300">Conditions d'utilisation </a></li>
                 </ul>
                 <ul className="flex flex-row gap-4">
-                    <li><i data-lucide="twitter" className="cursor-pointer opacity-40 hover:text-[#607AFB] transition-colors duration-300 filled-icon"></i></li>
-                    <li><i data-lucide="linkedin" className="cursor-pointer opacity-40 hover:text-[#607AFB] transition-colors duration-300 filled-icon"></i></li>
-                    <li><i data-lucide="facebook" className="cursor-pointer opacity-40 hover:text-[#607AFB] transition-colors duration-300 filled-icon"></i></li>
+                    <li><Twitter className="cursor-pointer opacity-40 hover:text-[#607AFB] transition-colors duration-300 filled-icon" /></li>
+                    <li><Linkedin className="cursor-pointer opacity-40 hover:text-[#607AFB] transition-colors duration-300 filled-icon" /></li>
+                    <li><Facebook className="cursor-pointer opacity-40 hover:text-[#607AFB] transition-colors duration-300 filled-icon" /></li>
                 </ul>
                 <small className="opacity-30">Copyright &copy; Invoice Gen 2025</small>
             </footer>
