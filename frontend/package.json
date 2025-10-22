@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.15",
+    "lucide": "^0.546.0",
+    "tailwindcss": "^4.1.15"
+  },
+  "devDependencies": {
+    "tailwindcss-animated": "^2.0.0"
+  }
+}
