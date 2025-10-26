@@ -9,12 +9,12 @@ export default function Landing({ mode }) {
         navigate(link)
     }
     return (
-        <div className={`w-full min-h-screen h-full flex flex-col items-center ${mode ? 'bg-neutral-100 text-neutral-800' : 'bg-gray-900 text-white'}`}>
+        <div className={`w-full min-h-screen h-full flex flex-col items-center ${mode ? 'bg-neutral-100 text-neutral-800' : 'bg-neutral-900 text-white'} transition-colors duration-200`}>
 
             <header className={`w-full xl:w-[80%] p-4 px-8 flex flex-row items-center justify-between border-b ${mode ? 'border-neutral-600/20' : 'border-white/20'} z-10 fixed top-0 backdrop-blur-xl`}>
                 <div className="flex flex-row items-center gap-4">
                     <ArrowDownRight className="text-[#607AFB]" />
-                    <h1 className="text-xl font-semibold">Invoice Gen</h1>
+                    <h1 className="text-xl font-semibold">InvoiceGen</h1>
                 </div>
                 <ul className="flex flex-row items-center gap-4">
                     <li><a className="hover:text-[#607AFB] opacity-40 transition-colors duration-250" href="#/">Home</a></li>
@@ -78,7 +78,7 @@ export default function Landing({ mode }) {
                     <li><Linkedin className="cursor-pointer opacity-40 hover:text-[#607AFB] transition-colors duration-300 filled-icon" /></li>
                     <li><Facebook className="cursor-pointer opacity-40 hover:text-[#607AFB] transition-colors duration-300 filled-icon" /></li>
                 </ul>
-                <small className="opacity-30">Copyright &copy; Invoice Gen 2025</small>
+                <small className="opacity-30">&copy;InvoiceGen 2025. Tout droits réservés</small>
             </footer>
         </div>
     )

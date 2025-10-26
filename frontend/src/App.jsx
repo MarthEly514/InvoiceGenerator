@@ -1,7 +1,7 @@
 import MainRoutes from "./MainRoutes";
 
 function App() {
-  let mode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  let mode = window.matchMedia('(prefers-color-scheme: light)').matches;
 
   return (
     <div className={`App ${mode ? 'light-mode' : 'dark-mode'}`}>
