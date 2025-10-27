@@ -1,4 +1,4 @@
-import { ArrowDownCircle, ArrowDownRight, ArrowUpCircle, Download } from "lucide-react";
+import { ArrowDownCircle, ArrowDownRight, ArrowUpCircle, Download, Loader2 } from "lucide-react";
 import Button from "../src/components/Buttton";
 import { useRef, useState } from "react";
 import { useEffect } from "react";
@@ -8,18 +8,32 @@ import ClientForm from "../src/components/ClientForm";
 import InvoiceInfos from "../src/components/InvoiceInfos";
 import Notes from "../src/components/Notes";
 import Preview from "../src/components/Preview";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import Classic from "../src/assets/models/Classic";
 
 export default function Edition({ mode }) {
     const dots = useRef(null)
     const stateKey = 'STA2hx4578'
-    // localStorage.setItem('currentState','0')
+    let date = new Date;
+    let number = 0;
+    let details = {
+        invoiceNo: `FAC-${date.getFullYear()}${date.getMonth()}${date.getDate()}${number}`,
+        date: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`,
+    }
+    localStorage.setItem('currentState', '0')
     const [activeDot, setActiveDot] = useState(parseInt(localStorage.getItem(stateKey)) || 0)
     const [lastActiveDot, setLastActiveDot] = useState(null)
     const [editionState, setEditionState] = useState(parseInt(localStorage.getItem(stateKey)) || 0)
 
     const [userInfos, setUserInfos] = useState({})
     const [clientInfos, setClientInfos] = useState({})
-    const [invoiceInfos, setInvoiceInfos] = useState({})
+    const [invoiceInfos, setInvoiceInfos] = useState({
+        details: details,
+        items: [],
+        currency: ''
+    })
     const [options, setOptions] = useState({})
 
 
@@ -28,6 +42,39 @@ export default function Edition({ mode }) {
         clientInfos: clientInfos,
         invoiceInfos: invoiceInfos,
         options: options,
+    }
+
+    {
+        /**
+         * data ={
+         *  userInfos:{
+         *      senderName: string,
+                senderAdress: string,
+                senderPhone: string,
+                senderNo: string,
+                senderLogo: string,
+         *      },
+         *  clientInfos:{
+         *      clientName: string,
+                clientAdress: string,
+                clientPhone: stings,
+                clientBillingDate: string,
+         *      },
+         * invoiceInfos:{
+         *      details:{
+         *          invoiceNo: string,
+         *          date: date,
+         *          },
+         *      items:[],
+         *      currency: string,
+         *      },
+         * options:{
+         *      option: string,
+                paymentMethod: string,
+                paymentInfos: string,
+         *      }
+         * }
+         */
     }
 
 
@@ -81,6 +128,8 @@ export default function Edition({ mode }) {
     }, [dots, activeDot])
 
 
+
+
     return (
         <div className={`w-full select-none h-screen ${mode ? 'bg-neutral-100 text-neutral-800' : 'bg-neutral-900 text-white'} flex flex-col items-center justify-center transition-colors duration-200`}>
 
@@ -95,11 +144,12 @@ export default function Edition({ mode }) {
                     >
                         {'Enregistrer brouillon'}
                     </button >
-                    <button
-                        className="text-white flex flex-row gap-3 bg-[#607AFB] hover:bg-[#616dc2] transition-colors duration-300 font-semibold p-3 px-6 rounded-lg cursor-pointer"
-                    >
-                        {<>Télécharger <Download /></>}
-                    </button >
+                    <PDFDownloadLink
+                        document={<Classic data={data} />}
+                        fileName="invoice.pdf"
+                        className="text-white flex flex-row gap-3 bg-[#607AFB] hover:bg-[#616dc2] transition-colors duration-300 font-semibold p-3 px-6 rounded-lg cursor-pointer">
+                        {({ loading }) => (loading ? <> Génération du PDF <Loader2 className="animate-spin animate-duration-500" /> </> : <> Télécharger < Download /></>)}
+                    </PDFDownloadLink>
                 </ul>
             </header>
             {/* form container */}
@@ -168,7 +218,7 @@ export default function Edition({ mode }) {
                     }
                     {activeDot == 4 &&
                         <>
-                            <Preview data={data}/>
+                            <Preview data={data} />
                         </>
                     }
                 </div>
@@ -192,6 +242,6 @@ export default function Edition({ mode }) {
 
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

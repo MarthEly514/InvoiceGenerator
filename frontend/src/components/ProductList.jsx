@@ -4,8 +4,9 @@ import { MinusCircle, PlusCircle } from 'lucide-react'
 import { useEffect } from 'react';
 import { useRef } from 'react';
 
-const ProductList = ({ mode, getItems, itemList }) => {
+const ProductList = ({ mode, getItems, itemList, currency }) => {
     const [items, setItems] = useState(itemList || []);
+    const [newCurrency, setCurrency] = useState(currency || '$');
     const [currentItem, setCurrentItem] = useState({
         desc: '',
         qty: 1,
@@ -47,20 +48,32 @@ const ProductList = ({ mode, getItems, itemList }) => {
     const removeItem = (id) => {
         setItems(prev => prev.filter(item => item.id !== id));
     };
-    const lastData = useRef(items)
+    const lastData = useRef(
+        {
+            items: items,
+            currency: newCurrency,
+
+        }
+    )
 
     useEffect(() => {
-        lastData.current = items
+        lastData.current = {
+            items: items,
+            currency: newCurrency,
+
+        }
         getItems(lastData.current)
         console.log('component ProductList Mounted');
+        console.log(lastData.current);
+        
 
-    }, [items])
+    }, [items, newCurrency])
 
     useEffect(() => {
         return () => {
             console.log('component ProductList Unmounted');
             getItems(lastData.current)
-            // console.log(lastData.current);
+            console.log(lastData.current);
 
         }
     }, [])
@@ -69,7 +82,7 @@ const ProductList = ({ mode, getItems, itemList }) => {
         <>
             {/* Main Content */}
             <div className="col-span-2 gap-3 flex flex-col">
-                <div className='grid grid-cols-5 w-full gap-2'>
+                <div className='grid grid-cols-6 w-full gap-2'>
                     <input
                         id="desc"
                         className={`p-3 col-span-2 ${mode ? 'bg-neutral-200/40' : 'bg-neutral-600/40'}  text-neutral-400 focus:outline-[#607AFB]/40 rounded-xl`}
@@ -102,6 +115,11 @@ const ProductList = ({ mode, getItems, itemList }) => {
                         value={currentItem.tva}
                         onChange={(e) => handleInputChange('tva', e.target.value)}
                         required />
+                    <select name="methods" className={`w-full p-3 rounded-xl ${mode ? 'bg-neutral-200/40 text-neutral-500' : 'bg-neutral-600/40 text-neutral-400'} focus:outline-none`} value={currency} onChange={(e) => setCurrency(e.target.value)}>
+                        <option value="$" className={`${mode ? 'bg-neutral-200/40' : 'bg-neutral-700'}`}>$</option>
+                        <option value="€" className={`${mode ? 'bg-neutral-200/40' : 'bg-neutral-700'}`}>&euro;</option>
+                        <option value="FCFA" className={`${mode ? 'bg-neutral-200/40' : 'bg-neutral-700'}`}>FCFA</option>
+                    </select>
 
                 </div >
                 <span
@@ -153,9 +171,9 @@ const ProductList = ({ mode, getItems, itemList }) => {
                                         <tr key={item.id} className={`w-full grid grid-cols-6 border-t ${mode ? 'border-neutral-200 text-neutral-500 hover:bg-neutral-200' : 'border-neutral-600 text-neutral-400 hover:bg-neutral-600'}`}>
                                             <td className="px-6 py-4 font-medium">{item.desc}</td>
                                             <td className="px-6 py-4">{item.qty}</td>
-                                            <td className="px-6 py-4">${item.price.toFixed(2)}</td>
+                                            <td className="px-6 py-4">{item.price.toFixed(2)} {newCurrency}</td>
                                             <td className="px-6 py-4">{item.tva.toFixed(1)}</td>
-                                            <td className="px-6 py-4 font-medium">${item.total.toFixed(2)}</td>
+                                            <td className="px-6 py-4 font-medium">{item.total.toFixed(2)} {newCurrency}</td>
                                             <td className="px-6 py-4">
                                                 <button
                                                     onClick={() => removeItem(item.id)}

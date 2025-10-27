@@ -13,20 +13,27 @@ export default function InvoiceInfos({ mode, invoiceInfos, getInvoiceInfos }) {
         date: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`,
     }
 
-    const [items, setItems] = useState(invoiceInfos.items || [])
+    const [data, setData] = useState(
+        {
+            items: invoiceInfos.items || [],
+            currency: invoiceInfos.currency || '$'
+        })
+        
     const lastData = useRef({
         details: details,
-        items: items,
+        items: data.items || [],
+        currency: data.currency || '$',
     })
     useEffect(() => {
         lastData.current = {
             details: details,
-            items: items,
+            items: data.items,
+            currency: data.currency,
         }
         getInvoiceInfos(lastData.current)
         console.log('component InvoiceInfos Mounted');
         // console.log(lastData.current);
-    }, [items])
+    }, [data])
 
     useEffect(() => {
         return () => {
@@ -60,9 +67,10 @@ export default function InvoiceInfos({ mode, invoiceInfos, getInvoiceInfos }) {
                 <h1 className='text-lg font-semibold col-span-2'>Articles</h1>
                 <ProductList
                     mode={mode}
-                    itemList={items}
+                    itemList={data.items}
+                    currency={data.currency}
                     getItems={(data) => {
-                        setItems(data);
+                        setData(data);
                         console.log(data);
 
                     }} />

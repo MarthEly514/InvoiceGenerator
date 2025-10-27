@@ -1,5 +1,6 @@
 import React from 'react'
 import Classic from '../assets/models/Classic'
+import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer';
 
 export default function Preview({ data }) {
     let models = [
@@ -25,6 +26,7 @@ export default function Preview({ data }) {
         },
 
     ]
+
     return (
         <div className='flex flex-row items-center justify-center gap-10'>
             <div className='p-5 h-[60vh] no-scrollBar flex flex-col gap-5 items-center overflow-y-scroll '>
@@ -41,10 +43,32 @@ export default function Preview({ data }) {
                     )
                 })}
             </div>
-            <Classic data={data} />
-            <div className='h-[60vh] w-[200px] rounded-xl bg-neutral-600'>
-
+            <div className="flex flex-col items-center justify-center">
+                <div className="aspect-[21/29.7] h-[50vh] rounded-lg overflow-hidden bg-white">
+                    <style>{`
+                /* Hide PDF toolbar */
+                iframe {
+                    border: none !important;
+                }
+                
+                /* Hide toolbar via shadow DOM targeting */
+                .react-pdf__Document {
+                    background: white !important;
+                }
+                
+                /* Remove gray background from PDF viewer */
+                canvas {
+                    background: white !important;
+                }
+            `}</style>
+                    <PDFViewer showToolbar={false} width="100%" height="100%">
+                        <Classic data={data} />
+                    </PDFViewer>
+                </div>
             </div>
+            {/* <div className='h-[60vh] w-[200px] rounded-xl bg-neutral-600'>
+
+            </div> */}
         </div>
     )
 }

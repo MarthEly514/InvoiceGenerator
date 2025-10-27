@@ -70,9 +70,14 @@ table tbody::-webkit-scrollbar-corner {
   width: 0px;
 
 }
+
 body::-webkit-scrollbar {
   -webkit-appearance: none;
   -moz-appearance: none;
   width: 0px;
 
+}
+
+iframe {
+  background-color: transparent;
 }
