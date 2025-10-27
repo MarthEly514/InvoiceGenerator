@@ -1,85 +1,3 @@
-// import React from 'react'
-
-// export default function Classic({ data, ref }) {
-//     let currency = data.invoiceInfos.currency;
-//     return (
-//         <div ref={ref} className='aspect-[21/29.7] h-[60vh] bg-white text-[#000000]'>
-//             {/* header */}
-//             <div>
-//                 <h1>FACTURE</h1>
-//                 <div>
-//                     <p></p>
-//                     <p>Facture n&deg; {data.invoiceInfos.details.invoiceNo}</p>
-//                 </div>
-//             </div>
-//             {/* infos */}
-//             <div className='border-t bordeer-[#262626]'>
-//                 <p>Facturé à:</p>
-//                 <ul>
-//                     <li>{data.clientInfos.clientName || ''}</li>
-//                     <li>{data.clientInfos.clientPhone || ''}</li>
-//                     <li>{data.clientInfos.clientAdress || ''}</li>
-//                 </ul>
-//             </div>
-//             {/* paymentMethod */}
-//             <div>
-
-//             </div>
-//             {/* table */}
-//             <div>
-//                 <table className={`table-fixed w-full scale-85 border-collapse bg-neutral-200/40  overflow-hidden`}>
-//                     <thead>
-//                         <tr>
-//                             <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider">
-//                                 Article
-//                             </th>
-//                             <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider">
-//                                 Quantité
-//                             </th>
-//                             <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider">
-//                                 Prix
-//                             </th>
-//                             <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider">
-//                                 {'TVA (%)'}
-//                             </th>
-//                             <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider">
-//                                 Montant
-//                             </th>
-//                         </tr>
-//                     </thead>
-//                     <tbody>
-//                         {data.invoiceInfos.items.length === 0 ? (
-//                             <tr className={`border-neutral-200 text-neutral-500`}>
-
-//                             </tr>
-//                         ) : (
-//                             data.invoiceInfos.items.map((item) => (
-//                                 <tr key={item.id} className={`border-t'border-neutral-200 text-neutral-500 ${data.invoiceInfos.items.indexOf(item) % 2 == 0 ? 'bg-neutral-200' : ''}`}>
-//                                     <td className="px-4 py-3 font-medium">{item.desc}</td>
-//                                     <td className="px-4 py-3">{item.qty}</td>
-//                                     <td className="px-4 py-3">{item.price.toFixed(2)}{currency}</td>
-//                                     <td className="px-4 py-3">{item.tva.toFixed(1)}</td>
-//                                     <td className="px-4 py-3 font-medium">{item.total.toFixed(2)}{currency}</td>
-//                                 </tr>
-//                             ))
-//                         )}
-//                     </tbody>
-//                 </table>
-//             </div>
-
-//             {/* total */}
-//             <div>
-
-//             </div>
-//             {/* mentions legales */}
-//             <div>
-
-//             </div>
-//         </div>
-//     )
-// }
-
-
 
 import React from 'react'
 import { Document, Page, Text, View, StyleSheet, PDFViewer } from '@react-pdf/renderer'
@@ -321,9 +239,6 @@ export default function Classic({ data }) {
     const taxTotal = data.invoiceInfos.items.reduce((sum, item) => sum + (item.total * item.tva / 100), 0)
     const total = subtotal + taxTotal
 
-    console.log(total);
-    
-
     return (
         <Document>
             <Page size="A4" style={styles.page}>
@@ -401,7 +316,7 @@ export default function Classic({ data }) {
                         </View>
                         <View style={styles.totalRow}>
                             <Text style={styles.totalLabel}>Tax ({data.options?.generalTVA || 0} %)</Text>
-                            <Text style={styles.totalValue}>{(parseFloat(subtotal) + ((parseFloat(data.options.generalTVA) / 100) * parseFloat(subtotal))).toFixed(2) || 0} {currency || 'USD'}</Text>
+                            <Text style={styles.totalValue}>{(parseFloat(subtotal) + ((parseFloat(data.options.generalTVA || 0) / 100) * parseFloat(subtotal))).toFixed(2) || 0} {currency || 'USD'}</Text>
                         </View>
                         <View style={styles.totalFinalBox}>
                             <Text style={styles.totalFinalLabel}>Total</Text>
