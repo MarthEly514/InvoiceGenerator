@@ -7,22 +7,22 @@ export default function Preview({ data }) {
         {
             id: 0,
             name: 'Classic',
-            thumbnail: 'filePath'
+            thumbnail: '/models/model1.jpeg'
         },
         {
             id: 1,
             name: 'Modern',
-            thumbnail: 'filePath'
+            thumbnail: '/models/model2.jpeg'
         },
         {
             id: 2,
             name: 'Creative',
-            thumbnail: 'filePath'
+            thumbnail: '/models/model3.jpeg'
         },
         {
             id: 3,
             name: 'Elegant',
-            thumbnail: 'filePath'
+            thumbnail: '/models/model4.jpeg'
         },
 
     ]
@@ -33,8 +33,9 @@ export default function Preview({ data }) {
                 {models.map((model) => {
                     return (
                         <div key={model.id} className='relative w-[200px] aspect-[21/29.7]'>
-                            <div className='w-[200px] bg-white aspect-[21/29.7] absolute top-0 left-0 rounded-xl'>
-                                {model.thumbnail}
+                            <div className='w-[200px] bg-white aspect-[21/29.7] absolute top-0 left-0 rounded-xl overflow-hidden'>
+                                <img src={model.thumbnail} alt={model.name} />
+
                             </div>
                             <div className='absolute rounded-xl top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-200 text-white font-semibold text-xl bg-neutral-400/50'>
                                 {model.name}
@@ -66,9 +67,6 @@ export default function Preview({ data }) {
                     </PDFViewer>
                 </div>
             </div>
-            {/* <div className='h-[60vh] w-[200px] rounded-xl bg-neutral-600'>
-
-            </div> */}
         </div>
     )
 }

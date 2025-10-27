@@ -22,10 +22,13 @@ export default function Edition({ mode }) {
         invoiceNo: `FAC-${date.getFullYear()}${date.getMonth()}${date.getDate()}${number}`,
         date: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`,
     }
+    const downloadButton = useRef(null)
     localStorage.setItem('currentState', '0')
     const [activeDot, setActiveDot] = useState(parseInt(localStorage.getItem(stateKey)) || 0)
     const [lastActiveDot, setLastActiveDot] = useState(null)
     const [editionState, setEditionState] = useState(parseInt(localStorage.getItem(stateKey)) || 0)
+    const [content1, setContent1] = useState('Précédent')
+    const [content2, setContent2] = useState('Suivant')
 
     const [userInfos, setUserInfos] = useState({})
     const [clientInfos, setClientInfos] = useState({})
@@ -120,13 +123,15 @@ export default function Edition({ mode }) {
         lastActiveDot != null && dots.current.children[lastActiveDot].classList.remove("scale-150")
         setLastActiveDot(activeDot)
         setEditionState(activeDot)
+        activeDot == 0 ? setContent1('Début') : setContent1('Précédent');
+        activeDot == 4 ? setContent2('Fin') : setContent1('Suivant');
+        activeDot == 4 ? '' : 'disabled';
         localStorage.setItem(stateKey, activeDot.toString())
         dots.current.children[activeDot].classList.add("scale-150")
         // console.log(dots.current.children[activeDot].classList);
         // console.log(lastActiveDot, activeDot);
 
     }, [dots, activeDot])
-
 
 
 
@@ -145,10 +150,11 @@ export default function Edition({ mode }) {
                         {'Enregistrer brouillon'}
                     </button >
                     <PDFDownloadLink
+                        ref={downloadButton}
                         document={<Classic data={data} />}
                         fileName="invoice.pdf"
-                        className="text-white flex flex-row gap-3 bg-[#607AFB] hover:bg-[#616dc2] transition-colors duration-300 font-semibold p-3 px-6 rounded-lg cursor-pointer">
-                        {({ loading }) => (loading ? <> Génération du PDF <Loader2 className="animate-spin animate-duration-500" /> </> : <> Télécharger < Download /></>)}
+                        className={`text-white disabled:bg-neutral-500 flex flex-row gap-3  bg-[#607AFB] hover:bg-[#616dc2] transition-colors duration-300 font-semibold p-3 px-6 rounded-lg cursor-pointer`}>
+                        {({ loading }) => (loading && activeDot == 4 ? <> Génération du PDF <Loader2 className="animate-spin animate-duration-500" /> </> : <> Télécharger < Download /></>)}
                     </PDFDownloadLink>
                 </ul>
             </header>
@@ -225,21 +231,14 @@ export default function Edition({ mode }) {
                 <div className="z-10 col-start-2 col-end-7 row-start-7 row-end-8 flex flex-row items-center justify-between px-6">
                     <NavButton
                         mode={mode}
-                        content={'Précédent'}
+                        content={content1}
                         onclick={() => stateBackward(true)} />
 
                     <NavButton
                         mode={mode}
                         type="primary"
-                        content={'Suivant'}
+                        content={content2}
                         onclick={() => stateForward(true)} />
-
-                    {/* <NavButton
-                        mode={mode}
-                        type="primary"
-                        content={'Get Data in Console'}
-                        onclick={() => console.log(data)} /> */}
-
                 </div>
             </div>
         </div >
