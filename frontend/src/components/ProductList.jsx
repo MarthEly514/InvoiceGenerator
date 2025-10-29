@@ -133,7 +133,7 @@ const ProductList = ({ mode, getItems, itemList, currency }) => {
                 {/* Added Items Table */}
                 <div>
 
-                    <h3 className="text-lg font-semibold">Articles ajoutés</h3>
+                    <h3 className="text-lg font-semibold mb-4">Articles ajoutés</h3>
 
                     <div>
                         <table className={`block ${mode ? 'bg-neutral-200/40' : 'bg-neutral-600/40'} rounded-xl overflow-hidden`}>
