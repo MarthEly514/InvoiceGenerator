@@ -1,0 +1,9 @@
+[build]
+  command = "cd frontend && npm run build"
+  publish = "frontend/dist"
+
+# Optional redirect for React Router (single-page app)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
