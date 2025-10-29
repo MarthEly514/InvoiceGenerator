@@ -122,9 +122,9 @@ export default function Edition({ mode }) {
         setEditionState(activeDot)
         activeDot == 0 ? setContent1('Début') : setContent1('Précédent');
         activeDot == 4 ? setContent2('Fin') : setContent2('Suivant');
-        activeDot == 4 ? '' : 'disabled';
         localStorage.setItem(stateKey, activeDot.toString())
         dots.current.children[activeDot].classList.add("scale-150")
+        // activeDot == 4 ? '' : 'disabled';
         // console.log(dots.current.children[activeDot].classList);
         // console.log(lastActiveDot, activeDot);
 
@@ -151,7 +151,7 @@ export default function Edition({ mode }) {
                         ref={downloadButton}
                         document={<Classic data={data} />}
                         fileName="invoice.pdf"
-                        className={`text-white disabled:bg-neutral-500 flex flex-row gap-3  bg-[#607AFB] hover:bg-[#616dc2] transition-colors duration-300 font-semibold p-3 px-6 rounded-lg cursor-pointer`}>
+                        className={`text-white ${activeDot == 4 ? 'bg-[#607AFB] hover:bg-[#616dc2]' : 'bg-neutral-500'} flex flex-row gap-3 transition-colors duration-300 font-semibold p-3 px-6 rounded-lg cursor-pointer`}>
                         {({ loading }) => (loading && activeDot == 4 ? <> <span className="hidden lg:inline">Génération du PDF</span> <Loader2 className="animate-spin animate-duration-500" /> </> : <> <span className="hidden lg:inline">Télécharger</span> < Download /></>)}
                     </PDFDownloadLink>
                 </ul>
