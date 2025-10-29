@@ -25,9 +25,9 @@ input[type='number']::-webkit-inner-spin-button {
   appearance: none;
 }
 
-/* body {
+body {
   font-family: Inter;
-} */
+}
 
 table tbody::-webkit-scrollbar {
   width: 12px;
