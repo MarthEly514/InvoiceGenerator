@@ -28,8 +28,8 @@ export default function Preview({ data }) {
     ]
 
     return (
-        <div className='flex flex-row items-center justify-center gap-10'>
-            <div className='p-5 h-[60vh] no-scrollBar flex flex-col gap-5 items-center overflow-y-scroll '>
+        <div className='w-full h-full flex flex-row items-center justify-center gap-10'>
+            <div className='p-5 h-[60vh] no-scrollBar hidden md:flex flex-col gap-5 items-center overflow-y-scroll '>
                 {models.map((model) => {
                     return (
                         <div key={model.id} className='relative w-[200px] aspect-[21/29.7]'>
@@ -45,7 +45,7 @@ export default function Preview({ data }) {
                 })}
             </div>
             <div className="flex flex-col items-center justify-center">
-                <div className="aspect-[21/29.7] h-[50vh] rounded-lg overflow-hidden bg-white">
+                <div className="aspect-[21/29.7] h-[60vh] lg:h-[50vh] rounded-lg overflow-hidden bg-white">
                     <style>{`
                 /* Hide PDF toolbar */
                 iframe {

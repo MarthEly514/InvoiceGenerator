@@ -32,7 +32,7 @@ export default function ClientForm({ mode, clientInfos, getClientInfos }) {
     }, [data])
     return (
         <div>
-            <form className="w-full min-w-[500px] max-w-[600px] h-max p-6 gap-2 flex flex-col">
+            <form className="w-full min-w-[360px] md:min-w-[500px] max-w-[600px] h-max p-6 gap-2 flex flex-col">
                 <label htmlFor="clientName">Nom / Raison sociale</label>
                 <input
                     id="clientName"

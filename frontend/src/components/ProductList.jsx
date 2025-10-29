@@ -82,10 +82,10 @@ const ProductList = ({ mode, getItems, itemList, currency }) => {
         <>
             {/* Main Content */}
             <div className="col-span-2 gap-3 flex flex-col">
-                <div className='grid grid-cols-6 w-full gap-2'>
+                <div className='grid md:grid-cols-6 w-full gap-2'>
                     <input
                         id="desc"
-                        className={`p-3 col-span-2 ${mode ? 'bg-neutral-200/40' : 'bg-neutral-600/40'}  text-neutral-400 focus:outline-[#607AFB]/40 rounded-xl`}
+                        className={`p-3 md:col-span-2 ${mode ? 'bg-neutral-200/40' : 'bg-neutral-600/40'}  text-neutral-400 focus:outline-[#607AFB]/40 rounded-xl`}
                         type="text"
                         placeholder='Produit ou Service'
                         value={currentItem.desc}

@@ -35,7 +35,7 @@ export default function UserForm({ mode, userInfos, getUserInfos }) {
 
     return (
         <div>
-            <form className="w-full min-w-[500px] max-w-[600px] h-max p-6 gap-2 flex flex-col">
+            <form className="w-full min-w-[350px] md:min-w-[500px] max-w-[600px] h-max p-3 lg:p-6 gap-2 flex flex-col">
                 <label htmlFor="senderName">Nom / Raison sociale</label>
                 <input
                     id="senderName"
