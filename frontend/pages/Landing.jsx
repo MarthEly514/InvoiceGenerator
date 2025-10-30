@@ -9,8 +9,12 @@ export default function Landing({ mode }) {
         navigate(link)
     }
     return (
-        <div className={`w-full min-h-screen flex flex-col items-center ${mode ? 'bg-neutral-100 text-neutral-800' : 'bg-neutral-900 text-white'} transition-colors duration-200`}>
-
+        <div className={`relative w-full min-h-screen flex flex-col items-center ${mode ? 'bg-neutral-100 text-neutral-800' : 'bg-neutral-900 text-white'} transition-colors duration-200`}>
+            <div style={{ backgroundImage: 'url(/linesPattern.svg)', backgroundSize: '5%' }} className="overflow-hidden w-full h-screen lg:h-[90vh] opacity-45 absolute top-0 left-0 bg-top-left flex flex-col items-center justify-center">
+                <div className="w-full absolute -top-25 left-0 h-50 rounded-full blur-2xl bg-neutral-900"></div>
+                {/* <div className="w-[60%] absolute aspect-5/2 rounded-full blur-2xl bg-neutral-900"></div> */}
+                <div className="w-full absolute -bottom-15 left-0 h-50 rounded-full blur-2xl bg-neutral-900"></div>
+            </div>
             <header className={`w-full xl:w-[80%] p-4 px-8 flex flex-row items-center justify-between border-b ${mode ? 'border-neutral-600/20' : 'border-white/20'} z-10 fixed top-0 backdrop-blur-xl`}>
                 <div className="flex flex-row items-center gap-4">
                     <ArrowDownRight className="text-[#607AFB]" />
@@ -25,7 +29,8 @@ export default function Landing({ mode }) {
 
             {/* <!-- hero section --> */}
             <section className="mt-10 w-full xl:w-[80%] h-screen lg:h-[90vh] flex flex-col items-center justify-center gap-y-8 animate-fade-up duration-600">
-                <h1 className="w-full md:w-[80%] xl:w-[70%] text-4xl xl:text-6xl font-semibold text-center px-3">
+
+                <h1 className="z-20 w-full md:w-[80%] xl:w-[70%] text-4xl xl:text-6xl font-semibold text-center px-3">
                     Générez des factures professionnelles en quelques secondes
                 </h1>
                 <p className="text-lg opacity-40 w-full text-center font-light px-4 xl:text-xl">
