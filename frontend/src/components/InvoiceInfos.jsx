@@ -46,7 +46,7 @@ export default function InvoiceInfos({ mode, invoiceInfos, getInvoiceInfos }) {
 
     return (
         <>
-            <form className="w-full max-w-[700px] h-max p-6 gap-3 grid grid-cols-2">
+            <form className="w-full max-w-[700px] h-max p-6 gap-3 grid grid-cols-2 overflow-scroll no-scrollBar">
                 <h1 className='text-lg font-semibold col-span-2'>Informations</h1>
                 <div>
                     <label htmlFor="invoiceNo">N&deg; facture</label>

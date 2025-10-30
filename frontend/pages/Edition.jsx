@@ -9,6 +9,7 @@ import Notes from "../src/components/Notes";
 import Preview from "../src/components/Preview";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import Classic from "../src/assets/models/Classic";
+import Minimalist from "../src/assets/models/Minimalist";
 
 export default function Edition({ mode }) {
     const dots = useRef(null)
@@ -72,6 +73,7 @@ export default function Edition({ mode }) {
          *      option: string,
                 paymentMethod: string,
                 paymentInfos: string,
+                generalTVA: int
          *      }
          * }
          */
@@ -149,7 +151,7 @@ export default function Edition({ mode }) {
                     </button >
                     <PDFDownloadLink
                         ref={downloadButton}
-                        document={<Classic data={data} />}
+                        document={<Minimalist data={data} />}
                         fileName="invoice.pdf"
                         className={`text-white ${activeDot == 4 ? 'bg-[#607AFB] hover:bg-[#616dc2]' : 'bg-neutral-500'} flex flex-row gap-3 transition-colors duration-300 font-semibold p-3 px-6 rounded-lg cursor-pointer`}>
                         {({ loading }) => (loading && activeDot == 4 ? <> <span className="hidden lg:inline">Génération du PDF</span> <Loader2 className="animate-spin animate-duration-500" /> </> : <> <span className="hidden lg:inline">Télécharger</span> < Download /></>)}
@@ -182,7 +184,7 @@ export default function Edition({ mode }) {
                     <h1 className="text-center lg:text-left text-xl lg:text-3xl font-semibold">{editionStates[editionState]}</h1>
                 </div>
                 {/* that actual form container 💀: renders the form based on the current state*/}
-                <div className="col-start-1 overflow-scroll lg:overflow-hidden lg:col-start-2 row-start-2 col-end-7 lg:row-end-7 row-end-8 flex flex-col items-center justify-start lg:justify-center">
+                <div className="col-start-1 no-scrollBar overflow-y-scroll lg:overflow-hidden lg:col-start-2 row-start-2 col-end-7 lg:row-end-7 row-end-8 flex flex-col items-center justify-start lg:justify-center">
                     {activeDot == 0 &&
                         <>
                             <UserForm
