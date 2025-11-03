@@ -19,6 +19,22 @@ export default function UserForm({ mode, userInfos, getUserInfos }) {
         }));
         console.log(data);
     };
+    const [photoUrl, setPhotoUrl] = useState(userInfos.senderLogo);
+
+    const handleImgChange = (file) => {
+        if (!file) return;
+
+        // const objectUrl = URL.createObjectURL(file);
+        const reader = new FileReader();
+        reader.onload = () => {
+
+            const imageDataURL = reader.result;
+            setPhotoUrl(imageDataURL);
+            handleInputChange('senderLogo', imageDataURL)
+        };
+        reader.readAsDataURL(file)
+    };
+
 
     useEffect(() => {
         let lastData = data
@@ -76,10 +92,10 @@ export default function UserForm({ mode, userInfos, getUserInfos }) {
                     id="senderLogo"
                     className={`p-3 ${mode ? 'bg-neutral-200/40' : 'bg-neutral-600/40'}  text-neutral-400 focus:outline-[#607AFB]/40 rounded-xl`}
                     type="file"
-                    value={data.senderLogo}
-                    onChange={(e) => handleInputChange('senderLogo', e.target.files[0])}
+                    accept='image/'
+                    // value={photoUrl}
+                    onChange={(e) => handleImgChange( e.target.files[0])}
 
-                // accept='image/IMG'
                 />
             </form>
         </div>

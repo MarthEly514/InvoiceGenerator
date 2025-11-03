@@ -47,6 +47,8 @@ const ProductList = ({ mode, getItems, itemList, currency }) => {
 
     const removeItem = (id) => {
         setItems(prev => prev.filter(item => item.id !== id));
+        console.log('Element removed');
+        
     };
     const lastData = useRef(
         {
@@ -159,7 +161,7 @@ const ProductList = ({ mode, getItems, itemList, currency }) => {
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody className='w-full block max-h-[250px] overflow-y-scroll'>
+                            <tbody className='w-full block max-h-[250px] overflow-y-scroll no-scrollBar'>
                                 {items.length === 0 ? (
                                     <tr className={`w-full flex flex-col items-center justify-center ${mode ? 'border-neutral-200 text-neutral-500' : 'border-neutral-600 text-neutral-400'}`}>
                                         <td className="px-6 py-12 text-center">
@@ -175,13 +177,13 @@ const ProductList = ({ mode, getItems, itemList, currency }) => {
                                             <td className="px-6 py-4">{item.tva.toFixed(1)}</td>
                                             <td className="px-6 py-4 font-medium">{item.total.toFixed(2)} {newCurrency}</td>
                                             <td className="px-6 py-4">
-                                                <button
+                                                <span
                                                     onClick={() => removeItem(item.id)}
                                                     className="text-red-300 hover:text-red-500 transition-colors"
-                                                    title="Remove item"
+                                                    title="Supprimer element"
                                                 >
                                                     <MinusCircle size={18} />
-                                                </button>
+                                                </span>
                                             </td>
                                         </tr>
                                     ))

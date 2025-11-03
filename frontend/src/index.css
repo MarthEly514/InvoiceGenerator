@@ -25,11 +25,11 @@ input[type='number']::-webkit-inner-spin-button {
   appearance: none;
 }
 
-body {
+/* body {
   font-family: Inter;
-}
+} */
 
-table tbody::-webkit-scrollbar {
+/*table tbody::-webkit-scrollbar {
   width: 12px;
   height: 12px;
 }
@@ -54,15 +54,15 @@ table tbody::-webkit-scrollbar-thumb:active {
 }
 
 /* Firefox */
-table tbody {
+/*table tbody {
   scrollbar-width: thin;
   scrollbar-color: #5e5e5e #1a1a1a00;
 }
 
 /* Scrollbar corner */
-table tbody::-webkit-scrollbar-corner {
+/*table tbody::-webkit-scrollbar-corner {
   background: #1a1a1a;
-}
+}*/
 
 .no-scrollBar::-webkit-scrollbar {
   -webkit-appearance: none;
@@ -80,4 +80,8 @@ body::-webkit-scrollbar {
 
 iframe {
   background-color: transparent;
+}
+
+#toolbar{
+  display: none !important;
 }

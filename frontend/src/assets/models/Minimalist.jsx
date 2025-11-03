@@ -230,8 +230,8 @@ export default function Minimalist({ data }) {
                             borderBottomColor: '#000000',
                             paddingBottom: '10',
                         }}>
-                            {data.invoiceInfos.items.map((item, index) => (
-                                <View key={item.id || index} style={styles.tableRow}>
+                            {data.invoiceInfos.items.map((item) => (
+                                <View key={item.id} style={styles.tableRow}>
                                     <Text style={[styles.cellText, styles.colDesc]}>{item.desc}</Text>
                                     <Text style={[styles.cellText, styles.colPrice]}>{item.price}</Text>
                                     <Text style={[styles.cellText, styles.colQty]}>{item.qty}</Text>
