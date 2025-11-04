@@ -8,26 +8,26 @@ if (!pdfMake.vfs) {
 
 pdfMake.addFonts({
   Inter: {
-    normal: `${window.location.origin}/src/fonts/Inter_28pt-Medium.ttf`,
-    bold: `${window.location.origin}/src/fonts/Inter_28pt-Bold.ttf`,
-    light: `${window.location.origin}/src/fonts/Inter_28pt-Light.ttf`,
-    thin: `${window.location.origin}/src/fonts/Inter_28pt-Thin.ttf`,
+    normal: `${window.location.origin}/fonts/Inter_28pt-Medium.ttf`,
+    bold: `${window.location.origin}/fonts/Inter_28pt-Bold.ttf`,
+    light: `${window.location.origin}/fonts/Inter_28pt-Light.ttf`,
+    thin: `${window.location.origin}/fonts/Inter_28pt-Thin.ttf`,
   },
   InterBold: {
-    normal: `${window.location.origin}/src/fonts/Inter_28pt-Bold.ttf`,
+    normal: `${window.location.origin}/fonts/Inter_28pt-Bold.ttf`,
   },
   InterLight: {
-    normal: `${window.location.origin}/src/fonts/Inter_28pt-Light.ttf`,
+    normal: `${window.location.origin}/fonts/Inter_28pt-Light.ttf`,
   },
   InterThin: {
-    normal: `${window.location.origin}/src/fonts/Inter_28pt-Thin.ttf`,
+    normal: `${window.location.origin}/fonts/Inter_28pt-Thin.ttf`,
   },
 
 
   Montserrat: {
-    normal: `${window.location.origin}/src/fonts/Montserrat-Regular.ttf`,
-    bold: `${window.location.origin}/src/fonts/Montserrat-Bold.ttf`,
-    light: `${window.location.origin}/src/fonts/Montserrat-Extra-Light.ttf`,
+    normal: `${window.location.origin}/fonts/Montserrat-Regular.ttf`,
+    bold: `${window.location.origin}/fonts/Montserrat-Bold.ttf`,
+    light: `${window.location.origin}/fonts/Montserrat-Extra-Light.ttf`,
   },
 });
 

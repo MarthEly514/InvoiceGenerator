@@ -8,13 +8,13 @@ if (!pdfMake.vfs) {
 
 pdfMake.addFonts({
   Montserrat: {
-    normal: `${window.location.origin}/src/fonts/Montserrat-Regular.ttf`,
-    bold: `${window.location.origin}/src/fonts/Montserrat-Bold.ttf`,
-    light: `${window.location.origin}/src/fonts/Montserrat-Extra-Light.ttf`,
-    italics: `${window.location.origin}/src/fonts/Montserrat-Extra-Light.ttf`,
+    normal: `${window.location.origin}/fonts/Montserrat-Regular.ttf`,
+    bold: `${window.location.origin}/fonts/Montserrat-Bold.ttf`,
+    light: `${window.location.origin}/fonts/Montserrat-Extra-Light.ttf`,
+    italics: `${window.location.origin}/fonts/Montserrat-Extra-Light.ttf`,
   },
   Rosaline: {
-    normal: `${window.location.origin}/src/fonts/Rosaline-Regular.ttf`
+    normal: `${window.location.origin}/fonts/Rosaline-Regular.ttf`
   }
 });
 
