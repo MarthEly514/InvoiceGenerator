@@ -13,8 +13,8 @@ pdfMake.addFonts({
     light: `${window.location.origin}/fonts/Montserrat-Extra-Light.ttf`,
     italics: `${window.location.origin}/fonts/Montserrat-Extra-Light.ttf`,
   },
-  Rosaline: {
-    normal: `${window.location.origin}/fonts/Rosaline-Regular.ttf`
+  Merienda: {
+    normal: `${window.location.origin}/fonts/Merienda-Regular.ttf`
   }
 });
 
@@ -134,7 +134,7 @@ export const classicInvoice = (data) => {
       // Footer
       {
         text: 'Thank you!',
-        font: "Rosaline",
+        font: "Merienda",
         fontSize: 35,
         alignment: 'left'
       }

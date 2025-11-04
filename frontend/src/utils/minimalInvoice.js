@@ -50,7 +50,7 @@ export const minimalInvoice = (data) => {
       {
         columns: [
           { width: '*', canvas: [{ type: 'line', x1: 0, y1: 30, x2: 250, y2: 30, lineWidth: 0.5 }] },
-          { width: 'auto', text: 'FACTURE minimale', style: 'header', margin: [20, 0, 0, 0], font: 'InterLight' }
+          { width: 'auto', text: 'FACTURE', style: 'header', margin: [20, 0, 0, 0], font: 'InterLight' }
         ],
         margin: [0, 0, 0, 40]
       },
