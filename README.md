@@ -81,5 +81,6 @@ Created a `netlify.toml` file inside the `./public` folder with the following co
 This project is released under the MIT License.
 
 ## Author
-Developed by Marth Ely.
+Developed by [**Marth Ely**](https://www.linkedin.com/in/marthely-adjovi-2936a432b/).
+
 Feel free to contribute, fork, or suggest improvements via pull requests.
