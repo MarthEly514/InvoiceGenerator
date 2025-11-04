@@ -51,7 +51,7 @@ export default function Notes({ mode, options, getOptions }) {
                 <input
                     type="number"
                     placeholder='%'
-                    onChange={(e) => handleInputChange('generalTVA', e.target.value)}
+                    onChange={(e) => { ((e.target.value) >= 0) ? handleInputChange('generalTVA', e.target.value) : handleInputChange('generalTVA', e.target.value * (-1)) }}
                     className={`p-3 w-max ${mode ? 'bg-neutral-200/40' : 'bg-neutral-600/40'}  text-neutral-400 focus:outline-[#607AFB]/40 rounded-xl`}
                 />
                 <h1 className='text-lg font-semibold'>Notes ou Options supplémentaires</h1>

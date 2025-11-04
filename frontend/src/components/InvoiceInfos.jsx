@@ -16,13 +16,13 @@ export default function InvoiceInfos({ mode, invoiceInfos, getInvoiceInfos }) {
     const [data, setData] = useState(
         {
             items: invoiceInfos.items || [],
-            currency: invoiceInfos.currency || '$'
+            currency: invoiceInfos.currency || 'FCFA'
         })
         
     const lastData = useRef({
         details: details,
         items: data.items || [],
-        currency: data.currency || '$',
+        currency: data.currency || 'FCFA',
     })
     useEffect(() => {
         lastData.current = {

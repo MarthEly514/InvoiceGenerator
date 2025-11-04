@@ -80,6 +80,7 @@ body::-webkit-scrollbar {
 
 iframe {
   background-color: transparent;
+  border: 0;
 }
 
 #toolbar{

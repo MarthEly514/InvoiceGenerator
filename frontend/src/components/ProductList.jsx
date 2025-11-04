@@ -6,7 +6,7 @@ import { useRef } from 'react';
 
 const ProductList = ({ mode, getItems, itemList, currency }) => {
     const [items, setItems] = useState(itemList || []);
-    const [newCurrency, setCurrency] = useState(currency || '$');
+    const [newCurrency, setCurrency] = useState(currency || '$FCFA');
     const [currentItem, setCurrentItem] = useState({
         desc: '',
         qty: 1,
@@ -48,7 +48,7 @@ const ProductList = ({ mode, getItems, itemList, currency }) => {
     const removeItem = (id) => {
         setItems(prev => prev.filter(item => item.id !== id));
         console.log('Element removed');
-        
+
     };
     const lastData = useRef(
         {
@@ -67,7 +67,7 @@ const ProductList = ({ mode, getItems, itemList, currency }) => {
         getItems(lastData.current)
         console.log('component ProductList Mounted');
         console.log(lastData.current);
-        
+
 
     }, [items, newCurrency])
 
@@ -99,28 +99,28 @@ const ProductList = ({ mode, getItems, itemList, currency }) => {
                         type="number"
                         placeholder='Quantité'
                         value={currentItem.qty}
-                        onChange={(e) => handleInputChange('qty', e.target.value)}
+                        onChange={(e) => { ((e.target.value) >= 0) ? handleInputChange('qty', e.target.value) : handleInputChange('qty', e.target.value * (-1)) }}
                         required />
                     <input
                         id="price"
                         className={`p-3 ${mode ? 'bg-neutral-200/40' : 'bg-neutral-600/40'}  text-neutral-400 focus:outline-[#607AFB]/40 rounded-xl`}
-                        type="text"
+                        type="number"
                         placeholder='Prix'
                         value={currentItem.price}
-                        onChange={(e) => handleInputChange('price', e.target.value)}
+                        onChange={(e) => { ((e.target.value) >= 0) ? handleInputChange('price', e.target.value) : handleInputChange('price', (e.target.value * (-1))) }}
                         required />
                     <input
                         id="tva"
                         className={`p-3 ${mode ? 'bg-neutral-200/40' : 'bg-neutral-600/40'}  text-neutral-400 focus:outline-[#607AFB]/40 rounded-xl`}
-                        type="text"
+                        type="number"
                         placeholder='TVA(%)'
                         value={currentItem.tva}
-                        onChange={(e) => handleInputChange('tva', e.target.value)}
-                        required />
+                        onChange={(e) => { ((e.target.value) >= 0) ? handleInputChange('tva', e.target.value) : handleInputChange('tva', e.target.value * (-1)) }}
+                        />
                     <select name="methods" className={`w-full p-3 rounded-xl ${mode ? 'bg-neutral-200/40 text-neutral-500' : 'bg-neutral-600/40 text-neutral-400'} focus:outline-none`} value={currency} onChange={(e) => setCurrency(e.target.value)}>
+                        <option value="FCFA" className={`${mode ? 'bg-neutral-200/40' : 'bg-neutral-700'}`}>FCFA</option>
                         <option value="$" className={`${mode ? 'bg-neutral-200/40' : 'bg-neutral-700'}`}>$</option>
                         <option value="€" className={`${mode ? 'bg-neutral-200/40' : 'bg-neutral-700'}`}>&euro;</option>
-                        <option value="FCFA" className={`${mode ? 'bg-neutral-200/40' : 'bg-neutral-700'}`}>FCFA</option>
                     </select>
 
                 </div >

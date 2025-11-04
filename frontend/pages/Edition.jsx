@@ -10,9 +10,11 @@ import Preview from "../src/components/Preview";
 import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 import Classic from "../src/assets/models/Classic";
 import Minimalist from "../src/assets/models/Minimalist";
-import { generateInvoicePDF } from "../src/utils/generatePDF";
+import { minimalInvoice } from "../src/utils/minimalInvoice";
 import pdfMake from "pdfmake/build/pdfmake";
 import * as pdfFonts from "pdfmake/build/vfs_fonts";
+import { classicInvoice } from "../src/utils/classicInvoice";
+import { creativeInvoice } from "../src/utils/creativeInvoice";
 
 if (!pdfMake.vfs) {
     pdfMake.vfs = pdfFonts.pdfMake?.vfs || pdfFonts.vfs;
@@ -43,36 +45,17 @@ export default function Edition({ mode }) {
         currency: ''
     })
     const [options, setOptions] = useState({})
-    const [chosenModelId, setChosenModelId] = useState(0) // Add this state
+    const [chosenModelId, setChosenModelId] = useState(0)
 
-    let models = [
-        {
-            id: 0,
-            name: 'Minimalist',
-            thumbnail: '/models/model1.jpeg',
-            component: Minimalist,
-        },
-        {
-            id: 1,
-            name: 'Classic',
-            thumbnail: '/models/model2.jpeg',
-            component: Classic,
-        },
-        {
-            id: 2,
-            name: 'Creative',
-            thumbnail: '/models/model3.jpeg',
-            component: Minimalist,
-        },
-        {
-            id: 3,
-            name: 'Elegant',
-            thumbnail: '/models/model4.jpeg',
-            component: Minimalist,
-        },
-    ]
+    const models = [
+        { id: 0, name: "Minimal", element: minimalInvoice, thumbnail: '/models/model1.jpeg' },
+        { id: 1, name: "Classic", element: classicInvoice, thumbnail: '/models/model2.jpeg' },
+        { id: 2, name: "Creative", element: creativeInvoice, thumbnail: '/models/model3.jpeg' },
+        { id: 3, name: "Elegant", element: 'elegantInvoice', thumbnail: '/models/model4.jpeg' },
+    ];
 
-    const ChosenComponent = models[chosenModelId].component // Use chosenModelId from state
+
+    const chosenModel = models[chosenModelId].element // Use chosenModelId from state
 
     let data = {
         userInfos: userInfos,
@@ -130,7 +113,7 @@ export default function Edition({ mode }) {
     }, [dots, activeDot])
 
     const handleDownload = () => {
-        const doc = generateInvoicePDF(data, ChosenComponent.name);
+        const doc = chosenModel(data);
         pdfMake.createPdf(doc).download("invoice.pdf");
     };
 
@@ -155,10 +138,6 @@ export default function Edition({ mode }) {
                         className={`text-white flex bg-[#607AFB] hover:bg-[#616dc2] disabled:bg-neutral-400 flex-row gap-3 transition-colors duration-300 font-semibold p-3 px-6 rounded-lg cursor-pointer`}>
                         <span className="hidden lg:inline">Télécharger</span> < Download />
                     </button>
-                    {/* <PDFViewer>
-                        <ChosenComponent data={data} />
-                    </PDFViewer> */}
-
                 </ul>
             </header>
 
@@ -223,15 +202,11 @@ export default function Edition({ mode }) {
                         <Preview
                             data={data}
                             models={models}
-                            getData={(data) => {
-                                setTimeout(() => {
-                                    () => setChosenModelId(data)
-                                }, 50);
-                                console.log(data);
-                                console.log(chosenModelId);
+                            getData={(data) => { setChosenModelId(data);
+                                // console.log(data);
+                                // console.log(chosenModelId);
                             }}
-                        // chosenModelId={chosenModelId}
-                        // setChosenModelId={setChosenModelId}
+
                         />
                     )}
                 </div>
