@@ -22,7 +22,7 @@ export default function Contact({ mode }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         // Ici, on ouvre le client mail avec les infos pré-remplies
-        window.location.href = `mailto:martharun514@gmail.com.com?subject=Message de ${formData.name}&body=Email: ${formData.email}%0D%0A%0D%0A${formData.message}`;
+        window.location.href = `mailto:martharun514@gmail.com?subject=Message de ${formData.name}&body=Email: ${formData.email}%0D%0A%0D%0A${formData.message}`;
         setSubmitted(true);
         setFormData({ name: "", email: "", message: "" });
     };
