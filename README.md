@@ -17,10 +17,6 @@
 ### Deployment
 - **Netlify** — Static site hosting
 
-### Backend
-- **Firebase** — User registration and authentication
-- **Django** — API server
-
 ---
 
 ## Faced Issues and Fixes
