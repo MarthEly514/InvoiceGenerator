@@ -38,7 +38,8 @@ export default function Edition({ mode }) {
         date: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`,
     }
     const downloadButton = useRef(null)
-    localStorage.setItem('currentState', '0')
+    localStorage.setItem('currentState', '0');
+    localStorage.setItem('sessionData', '{}');
     let sessionData = JSON.parse(localStorage.getItem('sessionData'));
     const [activeDot, setActiveDot] = useState(parseInt(localStorage.getItem(stateKey)) || 0)
     const [lastActiveDot, setLastActiveDot] = useState(null)
