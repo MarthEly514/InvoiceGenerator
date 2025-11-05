@@ -9,7 +9,7 @@ export default function Landing({ mode }) {
         navigate(link)
     }
     return (
-        <div className={`relative w-full min-h-screen flex flex-col items-center ${mode ? 'bg-neutral-100 text-neutral-800' : 'bg-neutral-900 text-white'} transition-colors duration-200`}>
+        <div id="about" className={`relative w-full min-h-screen flex flex-col items-center ${mode ? 'bg-neutral-100 text-neutral-800' : 'bg-neutral-900 text-white'} transition-colors duration-200`}>
             <div style={{ backgroundImage: 'url(/linesPattern.svg)', backgroundSize: '5%' }} className="overflow-hidden w-full h-screen lg:h-[90vh] opacity-45 absolute top-0 left-0 bg-top-left flex flex-col items-center justify-center">
                 <div className="w-full absolute -top-25 left-0 h-50 rounded-full blur-2xl bg-neutral-900"></div>
                 {/* <div className="w-[60%] absolute aspect-5/2 rounded-full blur-2xl bg-neutral-900"></div> */}
@@ -21,9 +21,9 @@ export default function Landing({ mode }) {
                     <h1 className="text-xl font-semibold cursor-pointer" onClick={()=>handleNavigate('/')}>InvoiceGen</h1>
                 </div>
                 <ul className="flex flex-row items-center gap-4">
-                    <li><a className="hover:text-[#607AFB] opacity-40 transition-colors duration-250 hidden md:flex" href="#/">Home</a></li>
-                    <li><a className="hover:text-[#607AFB] opacity-40 transition-colors duration-250 hidden md:flex" href="#/about">A propos</a></li>
-                    <li><a className="hover:text-[#607AFB] opacity-40 transition-colors duration-250" href="#/help">Aide</a></li>
+                    <li><a className="hover:text-[#607AFB] opacity-40 transition-colors duration-250 hidden md:flex" href="/">Home</a></li>
+                    <li><a className="hover:text-[#607AFB] opacity-40 transition-colors duration-250 hidden md:flex" href="/about">A propos</a></li>
+                    <li><a className="hover:text-[#607AFB] opacity-40 transition-colors duration-250" href="/help">Aide</a></li>
                 </ul>
             </header>
 
@@ -74,9 +74,9 @@ export default function Landing({ mode }) {
             </section>
             <footer className={`w-full xl:w-[80%] h-max flex flex-col items-center gap-8 py-25 mt-40 border-t ${mode ? 'border-neutral-600/20' : 'border-white/20'}`}>
                 <ul className="flex flex-col md:flex-row gap-4">
-                    <li className="opacity-40"><a href="" className="cursor-pointer hover:text-[#607AFB] transition-colors duration-300">Contact </a></li>
-                    <li className="opacity-40"><a href="" className="cursor-pointer hover:text-[#607AFB] transition-colors duration-300">Politique de confidentialité </a></li>
-                    <li className="opacity-40"><a href="" className="cursor-pointer hover:text-[#607AFB] transition-colors duration-300">Conditions d'utilisation </a></li>
+                    <li className="opacity-40"><a href="/contact" className="cursor-pointer hover:text-[#607AFB] transition-colors duration-300">Contact </a></li>
+                    <li className="opacity-40"><a href="/policy" className="cursor-pointer hover:text-[#607AFB] transition-colors duration-300">Politique de confidentialité </a></li>
+                    <li className="opacity-40"><a href="/terms" className="cursor-pointer hover:text-[#607AFB] transition-colors duration-300">Conditions d'utilisation </a></li>
                 </ul>
                 <ul className="flex flex-row gap-4">
                     <li><Twitter className="cursor-pointer opacity-40 hover:text-[#607AFB] transition-colors duration-300 filled-icon" /></li>
