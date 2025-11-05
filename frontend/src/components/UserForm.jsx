@@ -18,18 +18,18 @@ export default function UserForm({ mode, userInfos, getUserInfos }) {
             ...prev,
             [field]: value
         }));
-        console.log(data);
+        //console.log(data);
     };
 
     useEffect(() => {
         let lastData = data
 
-        console.log('component userform Mounted');
+        //console.log('component userform Mounted');
 
         return () => {
-            console.log('component userform Unmounted');
+            //console.log('component userform Unmounted');
             getUserInfos(lastData)
-            // console.log(lastData);
+            // //console.log(lastData);
 
         }
     }, [data])

@@ -15,18 +15,18 @@ export default function ClientForm({ mode, clientInfos, getClientInfos }) {
             ...prev,
             [field]: value
         }));
-        console.log(data);
+        //console.log(data);
     };
 
     useEffect(() => {
         let lastData = data
 
-        console.log('component Clientform Mounted');
+        //console.log('component Clientform Mounted');
 
         return () => {
-            console.log('component Clientform Unmounted');
+            //console.log('component Clientform Unmounted');
             getClientInfos(lastData)
-            // console.log(lastData);
+            // //console.log(lastData);
 
         }
     }, [data])

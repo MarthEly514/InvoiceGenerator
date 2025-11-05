@@ -47,7 +47,7 @@ const ProductList = ({ mode, getItems, itemList, currency }) => {
 
     const removeItem = (id) => {
         setItems(prev => prev.filter(item => item.id !== id));
-        console.log('Element removed');
+        //console.log('Element removed');
 
     };
     const lastData = useRef(
@@ -65,17 +65,17 @@ const ProductList = ({ mode, getItems, itemList, currency }) => {
 
         }
         getItems(lastData.current)
-        console.log('component ProductList Mounted');
-        console.log(lastData.current);
+        //console.log('component ProductList Mounted');
+        //console.log(lastData.current);
 
 
     }, [items, newCurrency])
 
     useEffect(() => {
         return () => {
-            console.log('component ProductList Unmounted');
+            //console.log('component ProductList Unmounted');
             getItems(lastData.current)
-            console.log(lastData.current);
+            //console.log(lastData.current);
 
         }
     }, [])

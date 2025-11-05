@@ -31,15 +31,15 @@ export default function InvoiceInfos({ mode, invoiceInfos, getInvoiceInfos }) {
             currency: data.currency,
         }
         getInvoiceInfos(lastData.current)
-        console.log('component InvoiceInfos Mounted');
-        // console.log(lastData.current);
+        //console.log('component InvoiceInfos Mounted');
+        // //console.log(lastData.current);
     }, [data])
 
     useEffect(() => {
         return () => {
-            console.log('component InvoiceInfos Unmounted');
+            //console.log('component InvoiceInfos Unmounted');
             getInvoiceInfos(lastData.current)
-            console.log(lastData.current);
+            //console.log(lastData.current);
 
         }
     }, [])
@@ -71,7 +71,7 @@ export default function InvoiceInfos({ mode, invoiceInfos, getInvoiceInfos }) {
                     currency={data.currency}
                     getItems={(data) => {
                         setData(data);
-                        console.log(data);
+                        //console.log(data);
 
                     }} />
             </form>

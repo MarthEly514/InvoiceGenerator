@@ -3,9 +3,10 @@ import React, { useState } from 'react'
 import pdfMake from "pdfmake/build/pdfmake";
 import * as pdfFonts from "pdfmake/build/vfs_fonts";
 import LivePDFPreview from './LivePreview';
-import { minimalInvoice } from '../utils/minimalInvoice';
-import { classicInvoice } from '../utils/classicInvoice';
-import { creativeInvoice } from '../utils/creativeInvoice';
+import { minimalInvoice } from '../utils/models/minimalInvoice';
+import { classicInvoice } from '../utils/models/classicInvoice';
+import { creativeInvoice } from '../utils/models/creativeInvoice';
+import { simpleInvoice } from '../utils/models/simpleInvoice';
 
 if (!pdfMake.vfs) {
     pdfMake.vfs = pdfFonts.pdfMake?.vfs || pdfFonts.vfs;
@@ -17,7 +18,7 @@ export default function Preview({ data, getData }) {
         { id: 0, name: "Minimal", element: minimalInvoice, thumbnail: '/models/model1.jpeg' },
         { id: 1, name: "Classic", element: classicInvoice, thumbnail: '/models/model2.jpeg' },
         { id: 2, name: "Creative", element: creativeInvoice, thumbnail: '/models/model3.jpeg' },
-        { id: 3, name: "Elegant", element: creativeInvoice, thumbnail: '/models/model4.jpeg' },
+        { id: 3, name: "Simple", element: simpleInvoice, thumbnail: '/models/model4.jpeg' },
     ];
 
     const [chosenModelId, setChosenModelId] = useState(localStorage.getItem("chosenModelId") ? parseInt(localStorage.getItem("chosenModelId")): 0);
@@ -32,7 +33,7 @@ export default function Preview({ data, getData }) {
                             onClick={() => {
                                 setChosenModelId(model.id);
                                 getData(model.id);
-                                console.log(model.id);
+                                //console.log(model.id);
                                 localStorage.setItem("chosenModelId", model.id.toString())
                             }}
                         >

@@ -62,7 +62,7 @@ export default function PhotoUpload({ mode, image, handleInputChange }) {
                 <input
                     onChange={(e) => {
                         handleImgChange(e.target.files[0]);
-                        console.log("haaaaaaa");
+                        //console.log("haaaaaaa");
 
                     }}
                     className="absolute cursor-pointer p-4 w-full h-full opacity-0"

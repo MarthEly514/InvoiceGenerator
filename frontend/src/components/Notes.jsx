@@ -15,18 +15,18 @@ export default function Notes({ mode, options, getOptions }) {
             ...prev,
             [field]: value
         }));
-        console.log(data);
+        //console.log(data);
     };
 
     useEffect(() => {
         let lastData = data
 
-        console.log('component Notes Mounted');
+        //console.log('component Notes Mounted');
 
         return () => {
-            console.log('component Notes Unmounted');
+            //console.log('component Notes Unmounted');
             getOptions(lastData)
-            console.log(lastData);
+            //console.log(lastData);
 
         }
     }, [data])
