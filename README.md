@@ -13,6 +13,7 @@
 - **pdfMake** — PDF generation
 - **Lucide React** — Icon set
 - **React Router DOM** — Routing and page management
+- **Material UI** — Popups and Snackbars
 
 ### Deployment
 - **Netlify** — Static site hosting
