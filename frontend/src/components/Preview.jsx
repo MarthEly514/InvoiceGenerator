@@ -1,9 +1,5 @@
-// import React, { useState } from 'react'
-// import Classic from '../assets/models/Classic'
-// import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer';
-// import Minimalist from '../assets/models/Minimalist';
+
 import React, { useState } from 'react'
-// import { generateInvoicePDF } from '../utils/generatePDF'
 import pdfMake from "pdfmake/build/pdfmake";
 import * as pdfFonts from "pdfmake/build/vfs_fonts";
 import LivePDFPreview from './LivePreview';

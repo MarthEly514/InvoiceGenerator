@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import Landing from '../pages/Landing';
 import Edition from '../pages/Edition';
-import Minimalist from './assets/models/Minimalist';
 import Test from './components/Test';
 
 function MainRoutes({ mode }) {
