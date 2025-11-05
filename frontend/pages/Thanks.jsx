@@ -79,7 +79,7 @@ export default function Thanks({ mode }) {
             <footer className={`absolute bottom-0 w-full xl:w-[80%] h-max flex flex-col items-center gap-8 py-8 pt-25 mt-20 `}>
                 <ul className="flex flex-col md:flex-row gap-4">
                     <li className="opacity-40"><a href="/contact" className="cursor-pointer hover:text-[#607AFB] transition-colors duration-300">Contact </a></li>
-                    <li className="opacity-40"><a href="/policy" className="cursor-pointer hover:text-[#607AFB] transition-colors duration-300">Politique de confidentialité </a></li>
+                    <li className="opacity-40"><a href="/privacy" className="cursor-pointer hover:text-[#607AFB] transition-colors duration-300">Politique de confidentialité </a></li>
                     <li className="opacity-40"><a href="/terms" className="cursor-pointer hover:text-[#607AFB] transition-colors duration-300">Conditions d'utilisation </a></li>
                 </ul>
                 <ul className="flex flex-row gap-4">

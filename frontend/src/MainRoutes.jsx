@@ -6,6 +6,8 @@ import Thanks from '../pages/Thanks';
 import About from '../pages/About';
 import Help from '../pages/Help';
 import Terms from '../pages/Terms';
+import Privacy from '../pages/Privacy';
+import Contact from '../pages/Contact';
 
 function MainRoutes({ mode }) {
     return (
@@ -16,6 +18,8 @@ function MainRoutes({ mode }) {
             <Route path="/help" element={<Help mode={mode} />} />
             <Route path="/thank-you" element={<Thanks mode={mode} />} />
             <Route path="/terms" element={<Terms mode={mode} />} />
+            <Route path="/privacy" element={<Privacy mode={mode} />} />
+            <Route path="/contact" element={<Contact mode={mode} />} />
             <Route path="/test" element={<Test mode={mode} />} />
         </Routes>
     );

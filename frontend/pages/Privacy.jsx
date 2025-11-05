@@ -2,11 +2,11 @@ import { useNavigate } from "react-router-dom";
 import { ArrowDownRight, ChevronLeft, Twitter, Linkedin, Facebook } from "lucide-react";
 import { useEffect } from "react";
 
-export default function Terms({ mode }) {
+export default function Privacy({ mode }) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        document.title = "Conditions d’utilisation - InvoiceGen";
+        document.title = "Politique de confidentialité - InvoiceGen";
     }, []);
 
     const handleNavigate = (link) => {
@@ -69,71 +69,59 @@ export default function Terms({ mode }) {
             {/* Content */}
             <section className="mt-32 mb-20 w-[80%] xl:w-[65%] flex flex-col items-start justify-center gap-y-8 animate-fade-up duration-600 px-4 lg:px-10">
                 <h1 className="text-4xl xl:text-5xl font-semibold text-[#607AFB] text-center w-full">
-                    Conditions d’utilisation
+                    Politique de confidentialité
                 </h1>
-                <p className="opacity-50 text-center w-full -mt-4">Dernière mise à jour : 4 novembre 2025</p>
+                <p className="opacity-50 text-center w-full -mt-4">Dernière mise à jour : 5 novembre 2025</p>
 
                 <article className="prose prose-invert max-w-none leading-relaxed mt-8 space-y-6 text-justify">
                     <p>
-                        Bienvenue sur <strong>InvoiceGen</strong>, une application web qui vous permet de
-                        créer et générer facilement des factures au format numérique. En utilisant cette
-                        application, vous acceptez les présentes conditions d’utilisation.
+                        Chez <strong>InvoiceGen</strong>, votre vie privée est importante. Cette politique
+                        explique comment les informations que vous saisissez dans l'application sont traitées
+                        et protégées.
                     </p>
 
-                    <h2 className="text-2xl font-semibold text-[#607AFB]">1. Objet de l’application</h2>
+                    <h2 className="text-2xl font-semibold text-[#607AFB]">1. Collecte de données</h2>
                     <p>
-                        InvoiceGen est une application fonctionnant entièrement côté client. Elle permet aux
-                        utilisateurs de créer et personnaliser des factures sans avoir besoin d’un serveur
-                        distant ni d’un compte utilisateur.
+                        InvoiceGen ne collecte aucune donnée personnelle sur un serveur externe. Toutes les
+                        informations que vous saisissez sont traitées uniquement sur votre appareil.
                     </p>
 
-                    <h2 className="text-2xl font-semibold text-[#607AFB]">2. Données et confidentialité</h2>
+                    <h2 className="text-2xl font-semibold text-[#607AFB]">2. Stockage local</h2>
                     <p>
-                        Toutes les informations saisies dans InvoiceGen sont traitées exclusivement sur votre
-                        appareil. Aucune donnée n’est transmise à un serveur externe ni collectée par le
-                        développeur.
-                    </p>
-                    <p>
-                        Les données peuvent être temporairement stockées dans votre navigateur (localStorage,
-                        cache) pour améliorer votre expérience, mais vous pouvez les supprimer à tout moment.
+                        Pour améliorer votre expérience, certaines données peuvent être temporairement
+                        enregistrées dans votre navigateur via localStorage ou cache. Vous pouvez les
+                        supprimer à tout moment sans affecter le fonctionnement de l’application.
                     </p>
 
-                    <h2 className="text-2xl font-semibold text-[#607AFB]">3. Utilisation de l’application</h2>
+                    <h2 className="text-2xl font-semibold text-[#607AFB]">3. Cookies et technologies similaires</h2>
                     <p>
-                        Vous pouvez utiliser InvoiceGen librement pour un usage personnel ou professionnel,
-                        dans le respect des lois en vigueur. Vous êtes responsable du contenu des informations
-                        que vous saisissez et des documents générés.
+                        InvoiceGen n’utilise pas de cookies pour suivre vos activités ou pour collecter
+                        des informations personnelles.
                     </p>
 
-                    <h2 className="text-2xl font-semibold text-[#607AFB]">4. Propriété intellectuelle</h2>
+                    <h2 className="text-2xl font-semibold text-[#607AFB]">4. Sécurité</h2>
                     <p>
-                        Le contenu, le design et le code source de l’application InvoiceGen sont protégés par
-                        les lois sur la propriété intellectuelle. Toute reproduction ou redistribution non
-                        autorisée est interdite.
+                        Comme les données sont traitées localement, leur sécurité dépend de la sécurité de
+                        votre appareil et de votre navigateur. Nous recommandons de garder votre navigateur
+                        et votre système à jour pour garantir une protection maximale.
                     </p>
 
-                    <h2 className="text-2xl font-semibold text-[#607AFB]">5. Absence de garantie</h2>
+                    <h2 className="text-2xl font-semibold text-[#607AFB]">5. Partage des données</h2>
                     <p>
-                        InvoiceGen est fourni “tel quel”, sans garantie d’aucune sorte. L’utilisateur reste
-                        responsable de la validité légale de ses factures et de leur conformité aux
-                        réglementations locales.
+                        Aucune donnée saisie dans InvoiceGen n’est partagée avec des tiers. Vous restez le
+                        seul propriétaire de vos informations.
                     </p>
 
-                    <h2 className="text-2xl font-semibold text-[#607AFB]">6. Limitation de responsabilité</h2>
+                    <h2 className="text-2xl font-semibold text-[#607AFB]">6. Modifications de la politique</h2>
                     <p>
-                        Le développeur ne peut être tenu responsable des pertes, erreurs ou dommages liés à
-                        l’utilisation de l’application, y compris la perte de données ou d’exploitation.
+                        Cette politique peut être mise à jour de temps en temps. La date de dernière mise à
+                        jour est indiquée en haut de cette page.
                     </p>
 
-                    <h2 className="text-2xl font-semibold text-[#607AFB]">7. Modifications</h2>
+                    <h2 className="text-2xl font-semibold text-[#607AFB]">7. Contact</h2>
                     <p>
-                        Ces conditions peuvent être modifiées à tout moment sans préavis. La date de dernière
-                        mise à jour figure en haut de cette page.
-                    </p>
-
-                    <h2 className="text-2xl font-semibold text-[#607AFB]">8. Contact</h2>
-                    <p>
-                        Pour toute question ou suggestion, vous pouvez contacter le développeur à l’adresse :{" "}
+                        Pour toute question concernant la confidentialité sur InvoiceGen, vous pouvez
+                        contacter le développeur à l’adresse :{" "}
                         <a href="mailto:martharun514@gmail.com" className="text-[#607AFB] hover:underline">
                             martharun514@gmail.com
                         </a>
@@ -171,9 +159,7 @@ export default function Terms({ mode }) {
                     </li>
                 </ul>
                 <ul className="flex flex-row gap-4">
-                    <li
-                    onClick={()=>handleNavigate('/terms')}
-                    >
+                    <li onClick={() => handleNavigate("/terms")}>
                         <Twitter className="cursor-pointer opacity-40 hover:text-[#607AFB] transition-colors duration-300 filled-icon" />
                     </li>
                     <li>
