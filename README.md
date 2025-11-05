@@ -14,6 +14,7 @@
 - **Lucide React** — Icon set
 - **React Router DOM** — Routing and page management
 - **Material UI** — Popups and Snackbars
+- **Formspree API** — E-mail fetching
 
 ### Deployment
 - **Netlify** — Static site hosting
@@ -73,6 +74,7 @@ Created a `netlify.toml` file inside the `./public` folder with the following co
 | **Functions directory** | `./frontend/netlify/functions` |
 | **Deploy log visibility** | Public |
 | **Build status** | Active |
+
 
 ## License
 This project is released under the MIT License.
