@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react'
+import PhotoUpload from './PhotoUpload';
 
 export default function UserForm({ mode, userInfos, getUserInfos }) {
 
@@ -19,22 +20,6 @@ export default function UserForm({ mode, userInfos, getUserInfos }) {
         }));
         console.log(data);
     };
-    const [photoUrl, setPhotoUrl] = useState(userInfos.senderLogo);
-
-    const handleImgChange = (file) => {
-        if (!file) return;
-
-        // const objectUrl = URL.createObjectURL(file);
-        const reader = new FileReader();
-        reader.onload = () => {
-
-            const imageDataURL = reader.result;
-            setPhotoUrl(imageDataURL);
-            handleInputChange('senderLogo', imageDataURL)
-        };
-        reader.readAsDataURL(file)
-    };
-
 
     useEffect(() => {
         let lastData = data
@@ -50,7 +35,7 @@ export default function UserForm({ mode, userInfos, getUserInfos }) {
     }, [data])
 
     return (
-        <div>
+        <div className='overflow-y-scroll no-scrollBar'>
             <form className="w-full min-w-[350px] md:min-w-[500px] max-w-[600px] h-max p-3 lg:p-6 gap-2 flex flex-col">
                 <label htmlFor="senderName">Nom / Raison sociale</label>
                 <input
@@ -88,14 +73,11 @@ export default function UserForm({ mode, userInfos, getUserInfos }) {
                     value={data.senderNo}
                     onChange={(e) => handleInputChange('senderNo', e.target.value)} />
                 <label htmlFor="senderLogo">{'Logo (optionnel)'}</label>
-                <input
-                    id="senderLogo"
-                    className={`p-3 ${mode ? 'bg-neutral-200/40' : 'bg-neutral-600/40'}  text-neutral-400 focus:outline-[#607AFB]/40 rounded-xl`}
-                    type="file"
-                    accept='image/'
-                    // value={photoUrl}
-                    onChange={(e) => handleImgChange( e.target.files[0])}
-
+                
+                <PhotoUpload
+                mode={mode}
+                image={userInfos.senderLogo}
+                handleInputChange={handleInputChange}
                 />
             </form>
         </div>

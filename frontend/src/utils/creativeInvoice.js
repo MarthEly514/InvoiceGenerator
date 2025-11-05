@@ -1,4 +1,3 @@
-// pdfGenerator.js
 import pdfMake from "pdfmake/build/pdfmake";
 import * as pdfFonts from "pdfmake/build/vfs_fonts";
 
@@ -31,75 +30,112 @@ pdfMake.addFonts({
   },
 });
 
-
 export const creativeInvoice = (data) => {
   const currency = data.invoiceInfos.currency || '$';
   const subtotal = data.invoiceInfos.items.reduce((sum, item) => sum + item.total, 0);
   const taxRate = data.options?.generalTVA || 0;
   const taxAmount = (subtotal * taxRate) / 100;
-  const total = subtotal + taxAmount;
+  const discount = data.options?.discount || 0;
+  const discountAmount = (subtotal * discount) / 100;
+  const total = subtotal + taxAmount - discountAmount;
 
   const docDefinition = {
     pageSize: "A4",
-    pageMargins: [60, 60, 60, 60],
+    pageMargins: [40, 40, 40, 40],
     defaultStyle: {
-      font: "Inter", // default font for all text
+      font: "Inter",
     },
     content: [
-      // Header
-      {
-        columns: [
-          { width: '*', canvas: [{ type: 'line', x1: 0, y1: 30, x2: 250, y2: 30, lineWidth: 0.5 }] },
-          { width: 'auto', text: 'FACTURE Crea', style: 'header', margin: [20, 0, 0, 0], font: 'InterLight' }
-        ],
-        margin: [0, 0, 0, 40]
-      },
+      // Header Section
 
-      // Client & Sender Info
       {
         columns: [
           {
             width: '50%',
             stack: [
-              { text: "À L'ORDRE DE:", style: 'label' },
-              { text: data.clientInfos.clientName || 'Logan Perry', style: 'info' },
-              { text: data.clientInfos.clientPhone || '878890', style: 'info' },
-              { text: data.clientInfos.clientAdress || 'May street', style: 'info', margin: [0, 0, 0, 10] },
-
-              { text: "PAIEMENT À:", style: 'label', margin: [0, 10, 0, 2] },
-              { text: data.userInfos.senderName || 'Raven.co', style: 'info' },
-              { text: `MÉTHODE : ${data.options?.paymentMethod || 'Virement Bancaire'}`, style: 'info' },
-              { text: `N° DE COMPTE: ${data.options?.paymentInfos || 'Raven.co 00054'}`, style: 'info' }
+              data.userInfos.senderLogo &&
+              {
+                // Logo placeholder - you can replace with actual image
+                image: data.userInfos.senderLogo,
+                width: 100,
+                alignment: 'left' // you can also use 'center' or 'right'
+              },
+              {
+                text: data.userInfos.senderName || 'Entreprise',
+                fontSize: 20,
+                bold: true,
+                color: '#2D2D2D',
+                lineHeight: 1.2,
+                margin: [0, 10, 0, 15]
+              },
+              {
+                text: data.userInfos.senderAdress || 'Addresse',
+                fontSize: 9,
+                bold: true,
+                color: '#2D2D2D',
+                margin: [0, 0, 0, 10]
+              },
+              {
+                text: data.userInfos.senderPhone || '(+62) 123 456 7890',
+                fontSize: 9,
+                color: '#2D2D2D'
+              }
             ]
           },
           {
-            width: '50%',
+            width: '*',
             stack: [
               {
-                columns: [
-                  { text: 'FACTURE NO:', style: 'label', alignment: 'right' },
-                  { text: data.invoiceInfos.details.invoiceNo || '', style: 'label', alignment: 'right' }
-                ],
-                margin: [0, 0, 0, 4]
+                text: 'FACTURE',
+                fontSize: 38,
+                bold: true,
+                color: '#5B4E96',
+                alignment: 'right',
+                margin: [0, 0, 0, 5],
               },
               {
-                columns: [
-                  { text: 'DATE:', style: 'label', alignment: 'right' },
-                  { text: data.invoiceInfos.details.date || '', style: 'info', alignment: 'right' }
-                ],
-                margin: [0, 0, 0, 4]
+                text: data.invoiceInfos.details.date || 'December 26, 2020',
+                fontSize: 11,
+                color: '#2D2D2D',
+                alignment: 'right',
+                margin: [0, 0, 0, 30]
               },
               {
-                columns: [
-                  { text: 'DATE LIMITE:', style: 'label', alignment: 'right' },
-                  { text: data.clientInfos.clientBillingDate || '', style: 'info', alignment: 'right' }
-                ]
+                text: 'À :',
+                fontSize: 9,
+                bold: true,
+                color: '#2D2D2D',
+                alignment: 'left',
+                margin: [130, 0, 0, 3]
+              },
+              {
+                text: data.clientInfos.clientName || 'Wagino Subianto',
+                fontSize: 13,
+                color: '#2D2D2D',
+                bold: true,
+                alignment: 'left',
+                margin: [130, 0, 0, 2]
+              },
+              {
+                text: data.clientInfos.clientAdress || 'Main street, Your Loc.\nNumber 06/B',
+                fontSize: 9,
+                color: '#2D2D2D',
+                alignment: 'left',
+                margin: [130, 0, 0, 2]
+              },
+              {
+                text: data.clientInfos.clientPhone || 'Mail or phone',
+                fontSize: 9,
+                color: '#2D2D2D',
+                alignment: 'left',
+                margin: [130, 0, 0, 2]
               }
             ]
           }
         ],
-        margin: [0, 0, 0, 20]
+        margin: [0, 0, 0, 30]
       },
+
 
       // Items Table
       {
@@ -108,69 +144,157 @@ export const creativeInvoice = (data) => {
           widths: ['*', 'auto', 'auto', 'auto'],
           body: [
             [
-              { text: 'DESCRIPTION', style: 'tableHeader' },
-              { text: 'PRIX UNITAIRE', style: 'tableHeader', alignment: 'center' },
-              { text: 'QTÉ', style: 'tableHeader', alignment: 'center' },
-              { text: 'TOTAL', style: 'tableHeader', alignment: 'right' }
+              { text: 'Article', style: 'tableHeader', fillColor: '#5B4E96', color: '#FFFFFF', border: [false, false, false, false], },
+              { text: 'Prix Unitaire', style: 'tableHeader', alignment: 'center', fillColor: '#5B4E96', color: '#FFFFFF', border: [false, false, false, false], },
+              { text: 'Qté', style: 'tableHeader', alignment: 'center', fillColor: '#5B4E96', color: '#FFFFFF', border: [false, false, false, false], },
+              { text: 'Total', style: 'tableHeader', alignment: 'right', fillColor: '#5B4E96', color: '#FFFFFF', border: [false, false, false, false], },
             ],
-
             ...data.invoiceInfos.items.map(item => [
-              { text: item.desc, style: 'tableCell' },
-              { text: item.price, style: 'tableCell', alignment: 'center' },
-              { text: item.qty, style: 'tableCell', alignment: 'center' },
-              { text: `${item.total} ${currency}`, style: 'tableCell', alignment: 'right' }
-            ]),
+              {
+                stack: [
+                  { text: item.desc || 'Items Name', bold: true, fontSize: 10, margin: [0, 0, 0, 2] },
+                ],
+                border: [false, false, false, true],
+                borderColor: ['', '', '', '#CCCCCC'],
+                margin: [0, 8, 0, 8]
+              },
+              { text: `${currency} ${item.price}`, style: 'tableCell', alignment: 'center', border: [false, false, false, true], borderColor: ['', '', '', '#CCCCCC'] },
+              { text: item.qty, style: 'tableCell', alignment: 'center', border: [false, false, false, true], borderColor: ['', '', '', '#CCCCCC'] },
+              { text: `${currency}  ${item.total}`, style: 'tableCell', alignment: 'right', border: [false, false, false, true], borderColor: ['', '', '', '#CCCCCC'] }
+            ])
           ]
         },
-        // layout: { hLineWidth: () => 0.5, vLineWidth: () => 0, hLineColor: () => '#333' },
         layout: {
-          hLineWidth: function (i, node) {
-            // Top border after header (i === 1) and bottom border (i === node.table.body.length)
-            return (i === 1 || i === node.table.body.length) ? 1 : 0;
-          },
-          vLineWidth: function () {
-            return 0;
-          },
-          hLineColor: function () {
-            return '#333333';
-          },
-          paddingTop: function () { return 8; },
-          paddingBottom: function () { return 8; }
+          hLineWidth: () => 2,
+          vLineWidth: () => 0,
+          paddingTop: function () { return 10; },
+          paddingBottom: function () { return 10; },
+          paddingLeft: function () { return 10; },
+          paddingRight: function () { return 10; }
         },
         margin: [0, 0, 0, 20]
       },
 
-      // Totals
+      // Totals Section
       {
         columns: [
           { width: '*', text: '' },
           {
-            width: 'auto',
+            width: 200,
             stack: [
-              { text: `TOTAL HT:  ${subtotal} ${currency}`, style: 'subTotal' },
-              { text: `TVA  (${data.options.generalTVA}%): ${taxAmount.toFixed(2)} ${currency}`, style: 'subTotal' },
-              { text: `TOTAL TTC:  ${total.toFixed(2)} ${currency}`, style: 'total' }
+              {
+                columns: [
+                  { text: 'TOTAL HT :', fontSize: 10, color: '#2D2D2D', alignment: 'right' },
+                  { text: `${currency} ${subtotal.toFixed(2)}`, fontSize: 10, bold: true, color: '#2D2D2D', alignment: 'right' }
+                ],
+                margin: [0, 0, 0, 5]
+              },
+              {
+                columns: [
+                  { text: `TVA ${taxRate}% :`, fontSize: 10, color: '#2D2D2D', alignment: 'right' },
+                  { text: `${currency}  ${taxAmount.toFixed(2)}`, fontSize: 10, bold: true, color: '#2D2D2D', alignment: 'right' }
+                ],
+                margin: [0, 0, 0, 5]
+              },
+              {
+                table: {
+                  widths: ['*', 'auto'],
+                  body: [
+                    [
+                      { text: 'TOTAL :', fontSize: 12, color: '#FFFFFF', alignment: 'center', fillColor: '#5B4E96' },
+                      { text: `${currency} ${total.toFixed(2)}`, fontSize: 12, bold: true, color: '#FFFFFF', alignment: 'center', fillColor: '#5B4E96' }
+                    ]
+                  ]
+                },
+                layout:
+                {
+                  hLineWidth: () => 0,
+                  vLineWidth: () => 0,
+                  paddingLeft: function () { return 10; },
+                  paddingRight: function () { return 10; },
+                  paddingTop: function () { return 10; },
+                  paddingBottom: function () { return 10; }
+                },
+                margin: [10, 10, 5, 5],
+              }
+
             ]
           }
         ],
-        margin: [0, 0, 0, 40]
+        margin: [0, 0, 0, 30]
       },
-      { text: data.options.option || '', style: 'option' },
 
+      // Note Section
+      data.options.option && {
+        text: 'Note:',
+        fontSize: 9,
+        bold: true,
+        color: '#2D2D2D',
+        margin: [0, 0, 0, 5]
+      },
+      {
+        text: data.options?.option || '',
+        fontSize: 8,
+        color: '#666666',
+        margin: [0, 0, 0, 30]
+      },
 
+      // Thank you message
+      {
+        text: 'Nous vous remercions !',
+        fontSize: 14,
+        bold: true,
+        color: '#5B4E96',
+        alignment: 'center',
+        margin: [0, 0, 0, 10]
+      },
+      {
+        canvas: [
+          { type: 'line', x1: 0, y1: 0, x2: 515, y2: 0, lineWidth: 1, lineColor: '#CCCCCC' }
+        ],
+        margin: [0, 0, 0, 20]
+      },
+
+      // Footer Section
+      {
+        columns: [
+          {
+            width: '50%',
+            stack: [
+              { text: 'Questions?', fontSize: 10, bold: true, color: '#2D2D2D', margin: [0, 0, 0, 5] },
+              { text: 'Appelez-nous ou \nEnvoyez-nous un e-mail:', bold: true, fontSize: 8, color: '#666666', margin: [0, 0, 0, 2] },
+              { text: data.userInfos.senderAdress, fontSize: 8, color: '#666666' },
+            ]
+          },
+          {
+            width: '50%',
+            stack: [
+              { text: 'Informations de paiement :', fontSize: 10, bold: true, color: '#2D2D2D', margin: [0, 0, 0, 5] },
+              { text: 'Méthode:', fontSize: 8, color: '#666666', margin: [0, 0, 0, 2], bold: true },
+              { text: data.options.paymentMethod, fontSize: 8, color: '#666666', margin: [0, 2, 0, 8] },
+
+              { text: 'Détails de paiement:', fontSize: 8, color: '#666666', margin: [0, 2, 0, 2], bold: true },
+              { text: data.options.paymentInfos, fontSize: 8, color: '#666666' }
+            ]
+          },
+        ]
+      }
     ],
 
     styles: {
-      header: { fontSize: 45, color: '#333', margin: [0, 0, 0, 10] },
-      label: { fontSize: 10, bold: true, color: '#333', margin: [0, 5, 0, 2] },
-      info: { fontSize: 10, color: '#333', margin: [0, 5, 0, 0] },
-      tableHeader: { fontSize: 12, bold: true, color: '#333', margin: [0, 2, 0, 2] },
-      tableCell: { fontSize: 10, color: '#333', margin: [0, 2, 0, 2] },
-      total: { fontSize: 12, bold: true, color: '#333', margin: [0, 6, 0, 2] },
-      subTotal: { fontSize: 10, bold: false, color: '#333', margin: [0, 6, 0, 2] },
-      option: { fontSize: 8, bold: false, color: '#333', margin: [0, 6, 0, 2] },
+      tableHeader: {
+        fontSize: 11,
+        bold: true,
+        margin: [0, 5, 0, 5]
+      },
+      tableCell: {
+        fontSize: 10,
+        color: '#2D2D2D',
+        margin: [0, 5, 0, 5]
+      }
     }
   };
+
 
   return docDefinition;
 };

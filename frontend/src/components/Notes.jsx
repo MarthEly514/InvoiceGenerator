@@ -47,10 +47,11 @@ export default function Notes({ mode, options, getOptions }) {
                     {data.paymentMethod == 'Cheque' && <input className={`w-full p-3 rounded-xl ${mode ? 'bg-neutral-200/40 text-neutral-500' : 'bg-neutral-600/40 text-neutral-400'} focus:outline-[#607AFB]/40`} value={data.paymentInfos} type="text" onChange={(e) => handleInputChange('paymentInfos', e.target.value)} placeholder="A l'ordre de.." />}
                     {data.paymentMethod == 'Paypal' && <input className={`w-full p-3 rounded-xl ${mode ? 'bg-neutral-200/40 text-neutral-500' : 'bg-neutral-600/40 text-neutral-400'} focus:outline-[#607AFB]/40`} value={data.paymentInfos} type="text" onChange={(e) => handleInputChange('paymentInfos', e.target.value)} placeholder="Addresse Paypal" />}
                 </div>
-                <h1 className='text-lg font-semibold'>TVA <small>( sur tout produit ou service )</small></h1>
+                <h1 className='text-lg font-semibold'>TVA <small>(% sur tout produit ou service )</small></h1>
                 <input
                     type="number"
-                    placeholder='%'
+                    placeholder='0'
+                    value={data.generalTVA}
                     onChange={(e) => { ((e.target.value) >= 0) ? handleInputChange('generalTVA', e.target.value) : handleInputChange('generalTVA', e.target.value * (-1)) }}
                     className={`p-3 w-max ${mode ? 'bg-neutral-200/40' : 'bg-neutral-600/40'}  text-neutral-400 focus:outline-[#607AFB]/40 rounded-xl`}
                 />

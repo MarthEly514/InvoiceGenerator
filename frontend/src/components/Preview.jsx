@@ -21,10 +21,10 @@ export default function Preview({ data, getData }) {
         { id: 0, name: "Minimal", element: minimalInvoice, thumbnail: '/models/model1.jpeg' },
         { id: 1, name: "Classic", element: classicInvoice, thumbnail: '/models/model2.jpeg' },
         { id: 2, name: "Creative", element: creativeInvoice, thumbnail: '/models/model3.jpeg' },
-        { id: 3, name: "Elegant", element: 'elegantInvoice', thumbnail: '/models/model4.jpeg' },
+        { id: 3, name: "Elegant", element: creativeInvoice, thumbnail: '/models/model4.jpeg' },
     ];
 
-    const [chosenModelId, setChosenModelId] = useState(0);
+    const [chosenModelId, setChosenModelId] = useState(localStorage.getItem("chosenModelId") ? parseInt(localStorage.getItem("chosenModelId")): 0);
     const chosenModel = models[chosenModelId];
 
     return (
@@ -37,7 +37,7 @@ export default function Preview({ data, getData }) {
                                 setChosenModelId(model.id);
                                 getData(model.id);
                                 console.log(model.id);
-                                
+                                localStorage.setItem("chosenModelId", model.id.toString())
                             }}
                         >
                             <div className='w-[200px] bg-white aspect-[21/29.7] absolute top-0 left-0 rounded-xl overflow-hidden'>

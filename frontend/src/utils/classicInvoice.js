@@ -133,7 +133,7 @@ export const classicInvoice = (data) => {
 
       // Footer
       {
-        text: 'Thank you!',
+        text: 'Thank you !',
         font: "Merienda",
         fontSize: 35,
         alignment: 'left'
