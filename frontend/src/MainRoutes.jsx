@@ -4,7 +4,6 @@ import Edition from '../pages/Edition';
 import Test from './components/Test';
 import Thanks from '../pages/Thanks';
 import About from '../pages/About';
-import Help from '../pages/Help';
 import Terms from '../pages/Terms';
 import Privacy from '../pages/Privacy';
 import Contact from '../pages/Contact';
@@ -15,7 +14,6 @@ function MainRoutes({ mode }) {
             <Route path="/" element={<Landing mode={mode} />} />
             <Route path="/edition" element={<Edition mode={mode} />} />
             <Route path="/about" element={<About mode={mode} />} />
-            <Route path="/help" element={<Help mode={mode} />} />
             <Route path="/thank-you" element={<Thanks mode={mode} />} />
             <Route path="/terms" element={<Terms mode={mode} />} />
             <Route path="/privacy" element={<Privacy mode={mode} />} />
