@@ -39,30 +39,9 @@ export default function Privacy({ mode }) {
                     </h1>
                 </div>
                 <ul className="flex flex-row items-center gap-4">
-                    <li>
-                        <a
-                            className="hover:text-[#607AFB] opacity-40 transition-colors duration-250 hidden md:flex"
-                            href="#/"
-                        >
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            className="hover:text-[#607AFB] opacity-40 transition-colors duration-250 hidden md:flex"
-                            href="#/about"
-                        >
-                            A propos
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            className="hover:text-[#607AFB] opacity-40 transition-colors duration-250"
-                            href="#/help"
-                        >
-                            Aide
-                        </a>
-                    </li>
+                    <li><a className="hover:text-[#607AFB] opacity-40 transition-colors duration-250 hidden md:flex" href="/">Home</a></li>
+                    <li><a className="hover:text-[#607AFB] opacity-40 transition-colors duration-250 hidden md:flex" href="/about">A propos</a></li>
+                    <li><a className="hover:text-[#607AFB] opacity-40 transition-colors duration-250" href="/contact">Contact</a></li>
                 </ul>
             </header>
 

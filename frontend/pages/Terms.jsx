@@ -39,30 +39,9 @@ export default function Terms({ mode }) {
                     </h1>
                 </div>
                 <ul className="flex flex-row items-center gap-4">
-                    <li>
-                        <a
-                            className="hover:text-[#607AFB] opacity-40 transition-colors duration-250 hidden md:flex"
-                            href="#/"
-                        >
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            className="hover:text-[#607AFB] opacity-40 transition-colors duration-250 hidden md:flex"
-                            href="#/about"
-                        >
-                            A propos
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            className="hover:text-[#607AFB] opacity-40 transition-colors duration-250"
-                            href="#/help"
-                        >
-                            Aide
-                        </a>
-                    </li>
+                    <li><a className="hover:text-[#607AFB] opacity-40 transition-colors duration-250 hidden md:flex" href="/">Home</a></li>
+                    <li><a className="hover:text-[#607AFB] opacity-40 transition-colors duration-250 hidden md:flex" href="/about">A propos</a></li>
+                    <li><a className="hover:text-[#607AFB] opacity-40 transition-colors duration-250" href="/contact">Contact</a></li>
                 </ul>
             </header>
 
@@ -172,7 +151,7 @@ export default function Terms({ mode }) {
                 </ul>
                 <ul className="flex flex-row gap-4">
                     <li
-                    onClick={()=>handleNavigate('/terms')}
+                        onClick={() => handleNavigate('/terms')}
                     >
                         <Twitter className="cursor-pointer opacity-40 hover:text-[#607AFB] transition-colors duration-300 filled-icon" />
                     </li>

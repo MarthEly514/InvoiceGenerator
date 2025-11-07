@@ -18,12 +18,12 @@ export default function Landing({ mode }) {
             <header className={`w-full xl:w-[80%] p-4 px-8 flex flex-row items-center justify-between border-b ${mode ? 'border-neutral-600/20' : 'border-white/20'} z-10 fixed top-0 backdrop-blur-xl`}>
                 <div className="flex flex-row items-center gap-4">
                     <ArrowDownRight className="text-[#607AFB]" />
-                    <h1 className="text-xl font-semibold cursor-pointer" onClick={()=>handleNavigate('/')}>InvoiceGen</h1>
+                    <h1 className="text-xl font-semibold cursor-pointer" onClick={() => handleNavigate('/')}>InvoiceGen</h1>
                 </div>
                 <ul className="flex flex-row items-center gap-4">
                     <li><a className="hover:text-[#607AFB] opacity-40 transition-colors duration-250 hidden md:flex" href="/">Home</a></li>
                     <li><a className="hover:text-[#607AFB] opacity-40 transition-colors duration-250 hidden md:flex" href="/about">A propos</a></li>
-                    <li><a className="hover:text-[#607AFB] opacity-40 transition-colors duration-250" href="/help">Aide</a></li>
+                    <li><a className="hover:text-[#607AFB] opacity-40 transition-colors duration-250" href="/contact">Contact</a></li>
                 </ul>
             </header>
 
