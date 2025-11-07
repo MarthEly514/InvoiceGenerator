@@ -24,11 +24,6 @@ export default function Thanks({ mode }) {
     };
     return (
         <div className={`relative w-full min-h-screen flex flex-col items-center ${mode ? 'bg-neutral-100 text-neutral-800' : 'bg-neutral-900 text-white'} transition-colors duration-200`}>
-            <div className="overflow-hidden w-full h-screen lg:h-[90vh] opacity-45 absolute top-0 left-0 bg-top-left flex flex-col items-center justify-center">
-                <div className="w-full absolute -top-25 left-0 h-50 rounded-full blur-2xl bg-neutral-900"></div>
-                {/* <div className="w-[60%] absolute aspect-5/2 rounded-full blur-2xl bg-neutral-900"></div> */}
-                <div className="w-full absolute -bottom-15 left-0 h-50 rounded-full blur-2xl bg-neutral-900"></div>
-            </div>
             <header className={`w-full xl:w-[80%] p-4 px-8 flex flex-row items-center justify-between border-b ${mode ? 'border-neutral-600/20' : 'border-white/20'} z-10 fixed top-0 backdrop-blur-xl`}>
                 <div className="flex flex-row items-center gap-4">
                     <ArrowDownRight className="text-[#607AFB]" />
@@ -42,19 +37,19 @@ export default function Thanks({ mode }) {
             </header>
 
             {/* <!-- hero section --> */}
-            <section className="mt-10 w-full xl:w-[80%] h-screen lg:h-[80vh] flex flex-col items-center justify-center gap-y-8 animate-fade-up duration-600">
+            <section className="w-full pt-40 md:pt-0 xl:w-[80%] min-h-screen lg:h-[80vh] flex flex-col items-center justify-center gap-y-8 animate-fade-up duration-600">
 
                 <div style={{ backgroundImage: "url('thanks.svg')" }} className="w-60 h-60 bg-no-repeat bg-center bg-contain"></div>
-                <h1 className="z-20 w-full md:w-[80%] xl:w-[70%] text-4xl xl:text-6xl font-semibold text-center px-3">
+                <h1 className="z-20 w-[90%] md:w-[80%] xl:w-[70%] text-4xl xl:text-6xl font-semibold text-center px-3">
                     Merci d'avoir utilisé InvoiceGen !
                 </h1>
                 <p className="text-lg opacity-40 w-full text-center font-light px-4 xl:text-xl">
                     Créez et envoyez et vos factures sans effort.
                 </p>
-                <div className="flex flex-row gap-3 items-center justify-center">
+                <div className="flex flex-col w-max md:flex-row gap-3 items-center justify-center">
 
                     <button
-                        className="text-[#697AFB] hover:text-white xl:text-xl flex flex-row items-center justify-center gap-3 border-2 border-[#697AFB] hover:bg-[#616dc2] transition-colors duration-300 font-semibold p-2.5 px-6 rounded-lg cursor-pointer"
+                        className="text-[#697AFB] w-full lg:w-max hover:text-white xl:text-xl flex flex-row items-center justify-center gap-3 border-2 border-[#697AFB] hover:bg-[#616dc2] transition-colors duration-300 font-semibold p-2.5 px-6 rounded-lg cursor-pointer"
                         onClick={() => handleNavigate(-1)}
                     >
                         <ChevronLeft />
@@ -67,6 +62,7 @@ export default function Thanks({ mode }) {
                             () => {
                                 handleNavigate('/edition')
                                 localStorage.setItem("sessionData", JSON.stringify({}));
+                                localStorage.setItem("currentState", "0");
                                 localStorage.setItem("chosenModelId", '0');
                                 localStorage.setItem(stateKey, '0');
                             }
@@ -76,7 +72,7 @@ export default function Thanks({ mode }) {
                 </div>
 
             </section>
-            <footer className={`absolute bottom-0 w-full xl:w-[80%] h-max flex flex-col items-center gap-8 py-8 pt-25 mt-20 `}>
+            <footer className={`lg:absolute lg:bottom-0 w-full xl:w-[80%] h-max flex flex-col items-center gap-8 py-8 pt-25 mt-20 `}>
                 <ul className="flex flex-col md:flex-row gap-4">
                     <li className="opacity-40"><a href="/contact" className="cursor-pointer hover:text-[#607AFB] transition-colors duration-300">Contact </a></li>
                     <li className="opacity-40"><a href="/privacy" className="cursor-pointer hover:text-[#607AFB] transition-colors duration-300">Politique de confidentialité </a></li>

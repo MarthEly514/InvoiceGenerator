@@ -4,6 +4,7 @@ import Button from "../src/components/Buttton";
 import { ArrowDownRight, Banknote, Facebook, Linkedin, Palette, Twitter, Zap } from "lucide-react";
 
 export default function Landing({ mode }) {
+    const stateKey = 'STA2hx4578'
     const navigate = useNavigate()
     const handleNavigate = (link) => {
         navigate(link)
@@ -40,9 +41,9 @@ export default function Landing({ mode }) {
                     content={'Générer une facture maintenant'}
                     onClick={() => {
                         handleNavigate('/edition');
-                        localStorage.setItem("STA2hx4578", "0");
+                        localStorage.setItem(stateKey, "0");
                         localStorage.setItem("chosenModelId", "0");
-                        localStorage.setItem("currentState","0");
+                        localStorage.setItem("currentState", "0");
                         localStorage.setItem("sessionData", "{}");
                     }}
                 />
