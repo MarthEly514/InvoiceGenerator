@@ -36,7 +36,7 @@ export const simpleInvoice = (data) => {
         "Nov",
         "Dec"
     ]
-const date = data?.clientInfos?.clientBillingDate?.split('-');
+    const date = data?.clientInfos?.clientBillingDate?.split('-');
 
 
     const docDefinition = {
@@ -187,7 +187,7 @@ const date = data?.clientInfos?.clientBillingDate?.split('-');
                     {
                         width: '33%',
                         stack: [
-                            { text: date !='' && (date[2] + ' ' + months[date[1] - 1] + ' ' + date[0]) || '18 May \'16', fontSize: 18, bold: true, color: '#2C3E50', alignment: 'center' }
+                            date && { text: date != '' && (date[2] + ' ' + months[date[1] - 1] + ' ' + date[0]) || '18 May \'16', fontSize: 18, bold: true, color: '#2C3E50', alignment: 'center' }
                         ]
                     },
                     {

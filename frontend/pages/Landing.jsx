@@ -38,7 +38,13 @@ export default function Landing({ mode }) {
                 </p>
                 <Button
                     content={'Générer une facture maintenant'}
-                    onClick={() => handleNavigate('/edition')}
+                    onClick={() => {
+                        handleNavigate('/edition');
+                        localStorage.setItem("STA2hx4578", "0");
+                        localStorage.setItem("chosenModelId", "0");
+                        localStorage.setItem("currentState","0");
+                        localStorage.setItem("sessionData", "{}");
+                    }}
                 />
 
             </section>
